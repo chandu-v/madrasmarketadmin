@@ -10,6 +10,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { AddCollectionComponent } from './add-collection/add-collection.component';
 import { ProductComponent } from './product/product.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { AddProductComponent } from './add-product/add-product.component';
     AddProductComponent
   ],
   imports: [
+    HttpClientModule,
+    ReactiveFormsModule,
     MatFormFieldModule,
     MatTableModule,
     BrowserModule,

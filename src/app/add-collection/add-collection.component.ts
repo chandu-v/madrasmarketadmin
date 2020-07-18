@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule, Validators, FormControl} from '@angular/forms';
+import { CollectionServiceService } from '../service/collection-service.service';
 
 @Component({
   selector: 'app-add-collection',
@@ -7,11 +8,19 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./add-collection.component.css']
 })
 export class AddCollectionComponent implements OnInit {
-  email = new FormControl('', [Validators.required]);
+  name = new FormControl('');
 
-  constructor() { }
+  constructor(private collectionService : CollectionServiceService) { }
 
   ngOnInit(): void {
+    
   }
 
+  getErrorMessage() {
+    return this.name.hasError('required') ? 'You must enter a value' : '';
+  }
+
+  onSubmit(){
+    console.log(this.name);
+  }
 }
