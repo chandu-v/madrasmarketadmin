@@ -1,41 +1,22 @@
 
 
   <div class="card-container">
-    <a class="card"  rel="noopener" href="add-collection/">
+    <a class="card"  rel="noopener" href="add-product/">
 
-      <span>Add Collection</span>
+      <span>Add Product</span>
 
 
     
 </a>
   </div>
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
-  
-    <!-- Position Column -->
-    <ng-container matColumnDef="product_id">
-      <th mat-header-cell *matHeaderCellDef> Product Id </th>
-      <td mat-cell *matCellDef="let element"> {{element.product_id}} </td>
-    </ng-container>
-  
-    <!-- Name Column -->
-    <ng-container matColumnDef="attribute_id">
-      <th mat-header-cell *matHeaderCellDef> Attribute Id </th>
-      <td mat-cell *matCellDef="let element"> {{element.attribute_id}} </td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="value">
-      <th mat-header-cell *matHeaderCellDef> Value </th>
-      <td mat-cell *matCellDef="let element"> {{element.value}} </td>
-    </ng-container>
-  
-    
-  
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-  </table>
-  
+<ul>
+  <li *ngFor="let product of map.values()">
+    <mat-grid-list cols="11" rowHeight="">
+      <mat-grid-tile *ngFor="let item of product">
+            {{item.value}}
+      </mat-grid-tile>
+     
+    </mat-grid-list>
+    </li>
+  </ul>  
   
