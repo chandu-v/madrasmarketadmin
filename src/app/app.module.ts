@@ -12,6 +12,7 @@ import { ProductComponent } from './product/product.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     AddProductComponent
   ],
   imports: [
+    MatButtonModule,
     HttpClientModule,
     ReactiveFormsModule,
     MatFormFieldModule,

@@ -7,7 +7,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductServiceService {
-  private baseURL = "https://madrasmarketapi.azurewebsites.net/";
+  private baseURL = "https://madrasmarketplaceapi.azurewebsites.net/";
   constructor(private http: HttpClient) { }
 
   httpOptions = {

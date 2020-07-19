@@ -1,8 +1,8 @@
-<div class="example-container">
-    <mat-form-field appearance="fill">
-      <mat-label>Enter your email</mat-label>
-      <input matInput placeholder="staples" [formControl]="name" required>
-      <mat-error *ngIf="name.invalid">{{getErrorMessage()}}</mat-error>
-    </mat-form-field>
-  </div>
-  
+<label>
+  Collection Name:
+  <input type="text" placeholder="Ex. Staples" [formControl]="name">
+</label>
+
+<p>
+  <button (click)="onSubmit()">Add</button>
+</p>

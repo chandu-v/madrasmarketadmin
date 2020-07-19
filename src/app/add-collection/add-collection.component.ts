@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormsModule, ReactiveFormsModule, Validators, FormControl} from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { CollectionServiceService } from '../service/collection-service.service';
+import { Collection } from '../bean/collection';
 
 @Component({
   selector: 'app-add-collection',
@@ -13,14 +14,17 @@ export class AddCollectionComponent implements OnInit {
   constructor(private collectionService : CollectionServiceService) { }
 
   ngOnInit(): void {
-    
   }
 
-  getErrorMessage() {
-    return this.name.hasError('required') ? 'You must enter a value' : '';
-  }
-
-  onSubmit(){
-    console.log(this.name);
+  onSubmit() {
+    if(this.name.value == ''){
+      alert('Enter Some Value')
+      return;
+    }else{
+      this.collectionService.addCollection( this.name.value)
+      .subscribe(data=>{
+        console.log(data);
+      });
+    }
   }
 }
