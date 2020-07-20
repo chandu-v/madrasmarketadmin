@@ -1,8 +1,13 @@
+
+
+
 <label>
   Collection Name:
-  <input type="text" placeholder="Ex. Staples" [formControl]="name">
+  <input type="text" placeholder="Ex. Staples" [value]="collection_name" [formControl]="name">
+
 </label>
 
 <p>
   <button (click)="onSubmit()">Add</button>
 </p>
+<mat-spinner [style.visibility]="isHidden? 'hidden': 'visible'"></mat-spinner>

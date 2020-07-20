@@ -1,22 +1,18 @@
+<div class="card-container">
+  <a class="card" rel="noopener" href="add-product/">
+
+    <span>Add Product</span>
 
 
-  <div class="card-container">
-    <a class="card"  rel="noopener" href="add-product/">
 
-      <span>Add Product</span>
+  </a>
+</div>
+<table class="mat-table">
+  <tr class="mat-header-row">
+    <th class="mat-header-cell" *ngFor="let attribute of header">{{attribute.attribute_name}}</th>
 
-
-    
-</a>
-  </div>
-<ul>
-  <li *ngFor="let product of map.values()">
-    <mat-grid-list cols="11" rowHeight="">
-      <mat-grid-tile *ngFor="let item of product">
-            {{item.value}}
-      </mat-grid-tile>
-     
-    </mat-grid-list>
-    </li>
-  </ul>  
-  
+  </tr>
+  <tr class="mat-row" *ngFor="let product of map.values()">
+    <td class="mat-cell" *ngFor="let item of product">{{item.value}}</td>
+  </tr>
+</table>

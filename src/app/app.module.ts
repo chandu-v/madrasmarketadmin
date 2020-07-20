@@ -10,10 +10,13 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { AddCollectionComponent } from './add-collection/add-collection.component';
 import { ProductComponent } from './product/product.component';
 import { AddProductComponent } from './add-product/add-product.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule,FormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list'; 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner'; 
+import {MatIconModule} from '@angular/material/icon'; 
+import {MatListModule} from '@angular/material/list'; 
 
 @NgModule({
   declarations: [
@@ -24,6 +27,10 @@ import {MatGridListModule} from '@angular/material/grid-list';
     AddProductComponent
   ],
   imports: [
+    MatListModule,
+    FormsModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
     MatGridListModule,
     MatButtonModule,
     HttpClientModule,
