@@ -1,1 +1,59 @@
-<p>add-product works!</p>
+<div class="example-container">
+  
+  <label>
+    Product Name:
+    <input type="text" placeholder="Ex. Staples" [ngModel]="product_name" [formControl]="name_form_control" required >
+  </label>
+  <br>
+  <label>
+    Product Description:
+    <textarea placeholde="Product Description" [value]="product_description" [formControl]="description_form_control">
+    </textarea>
+  </label>
+  <br>
+  <label>
+    UPC:
+    <input type="text" placeholder="123456" [ngModel]="upc" [formControl]="upc_form_control">
+  </label>
+  <br>
+  <label>
+    Quantity:
+    <input type="text" placeholder="1" [value]="quantity" [formControl]="quantity_form_control">
+    
+  </label>
+  <br>
+  <label>
+    metric:
+    <input type="text" placeholder="KG" [value]="metric" [formControl]="metric_form_control">
+    
+  </label>
+  <br>
+  <label>
+    MRP:
+    <input type="text" placeholder="120" [value]="mrp" [formControl]="mrp_form_control">
+    
+  </label>
+  <br>
+  <label>
+    Discount:
+    <input type="text" placeholder="2" [value]="discount" [formControl]="discount_form_control">
+    
+  </label>
+  <br>
+  <label>
+    Collection:
+    <input type="text" placeholder="1" [value]="collection" [formControl]="collection_form_control">
+    
+  </label>
+  <br>
+  
+  <label>
+    SKU:
+    <input type="text" placeholder="123456" [value]="sku" [formControl]="sku_form_control">
+    
+  </label>
+  <br>
+    <button (click)="onSubmit()">Add</button>
+  <mat-spinner [style.visibility]="isHidden? 'hidden': 'visible'"></mat-spinner>
+  </div>
+  <!-- product_name	product_desctiption	upc	quantity	metric	image1	image2	mrp	gst	discount	collection	sku	tamil_title -->

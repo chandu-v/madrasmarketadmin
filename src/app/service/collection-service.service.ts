@@ -31,7 +31,7 @@ export class CollectionServiceService {
 
   addCollection(collection_name: String)   {
     const collectionInsertURL = `${this.baseURL}collections/add`;
-    const body = JSON.stringify({"collection_name": collection_name});
+    const body = JSON.stringify({"collection_name": collection_name,"parent_id":-1});
     console.log(collectionInsertURL);
     console.log(body);
 

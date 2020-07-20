@@ -24,7 +24,11 @@
     "@angular/router": "~9.0.2",
     "@azure/ng-deploy": "^0.2.3",
     "@material/grid-list": "^4.0.0",
+    "@material/select": "^7.0.0",
+    "angular-material": "^1.1.24",
+    "angular-material-expansion-panel": "^0.7.2",
     "ng-form-group": "^1.4.2",
+    "ngx-mat-select-search": "^3.0.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
