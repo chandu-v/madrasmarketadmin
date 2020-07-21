@@ -2,18 +2,18 @@
   
   <label>
     Product Name:
-    <input type="text" placeholder="Ex. Staples" [ngModel]="product_name" [formControl]="name_form_control" required >
+    <input type="text" placeholder="Ex. Staples" [formControl]="name_form_control" >
   </label>
   <br>
   <label>
     Product Description:
-    <textarea placeholde="Product Description" [value]="product_description" [formControl]="description_form_control">
+    <textarea placeholde="Product Description" [formControl]="description_form_control">
     </textarea>
   </label>
   <br>
   <label>
     UPC:
-    <input type="text" placeholder="123456" [ngModel]="upc" [formControl]="upc_form_control">
+    <input type="text" placeholder="123456" [formControl]="upc_form_control">
   </label>
   <br>
   <label>
@@ -37,6 +37,12 @@
   <label>
     Discount:
     <input type="text" placeholder="2" [value]="discount" [formControl]="discount_form_control">
+    
+  </label>
+  <br>
+  <label>
+    GST:
+    <input type="text" placeholder="2" [value]="gst" [formControl]="gst_form_control">
     
   </label>
   <br>

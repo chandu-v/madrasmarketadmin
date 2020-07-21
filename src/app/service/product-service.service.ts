@@ -7,6 +7,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductServiceService {
+  
   private baseURL = "https://madrasmarketplaceapi.azurewebsites.net/";
   constructor(private http: HttpClient) { }
 
@@ -21,6 +22,17 @@ export class ProductServiceService {
     return this.http.get(collectionURL).pipe(
       tap(_ => console.log(`fetched Products`)),
       catchError(this.handleError(`Error in Fetching Collections`)));
+  }
+
+  add(product_attributes: { product_Attribute_EmbeddedId: { attribute_id: number; }; value: any; }[]) {
+    const addProductUrl = `${this.baseURL}products/add`;
+    console.log(addProductUrl);
+    console.log(product_attributes);
+    return this.http.post(addProductUrl,product_attributes,this.httpOptions)
+    .pipe(
+      tap(_=> console.log(`added Products`)),
+      catchError(this.handleError(`Error in adding products`))
+    )
   }
   /**
 * Handle Http operation that failed.
