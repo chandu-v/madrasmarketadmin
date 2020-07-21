@@ -1,6 +1,6 @@
 
-
-
+<button mat-raised-button color="">{{parent_collection}}</button>
+<br><br><br><br>
 <label>
   Collection Name:
   <input type="text" placeholder="Ex. Staples" [value]="collection_name" [formControl]="name">
@@ -8,6 +8,6 @@
 </label>
 
 <p>
-  <button (click)="onSubmit()">Add</button>
+  <button mat-raised-button color="primary" (click)="onSubmit()">Add</button>
 </p>
 <mat-spinner [style.visibility]="isHidden? 'hidden': 'visible'"></mat-spinner>

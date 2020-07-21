@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError,  tap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { catchError,  tap, mergeMap, switchMap, map, startWith } from 'rxjs/operators';
+import { Observable, of, Subject, from, OperatorFunction } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +9,15 @@ import { Observable, of } from 'rxjs';
 export class ProductServiceService {
   
   private baseURL = "https://madrasmarketplaceapi.azurewebsites.net/";
+  private uploadQueueInner$ = new Subject<FileList>();
+
+
+  get uploadQueue$() {
+    return this.uploadQueueInner$
+      .asObservable()
+      .pipe(mergeMap(files => from(files)));
+  }
+
   constructor(private http: HttpClient) { }
 
   httpOptions = {
@@ -34,6 +43,8 @@ export class ProductServiceService {
       catchError(this.handleError(`Error in adding products`))
     )
   }
+
+  
   /**
 * Handle Http operation that failed.
 * Let the app continue.
@@ -53,4 +64,11 @@ export class ProductServiceService {
       return of(result as T);
     };
   }
+
+  
+  uploadItems(files: FileList): void {
+    console.log(files);
+    // this.uploadQueueInner$.next(files);
+  }
+
 }

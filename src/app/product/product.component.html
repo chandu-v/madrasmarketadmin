@@ -1,19 +1,21 @@
-<div class="content" role="main">
 <div class="card-container">
   <a class="card" rel="noopener" href="add-product/">
 
-    <span>Add Product</span>
+    <button mat-raised-button color="primary">Add Product</button>
 
 
 
   </a>
 </div>
-<table class="mat-table">
-  <tr class="mat-header-row">
-    <th class="mat-header-cell" *ngFor="let attribute of header">{{attribute.attribute_name}}</th>
+<table  >
+  <tr >
+    <th *ngFor="let attribute of header">{{attribute.attribute_name}}</th>
 
   </tr>
-  <tr class="mat-row" *ngFor="let product of map.values()">
-    <td class="mat-cell" *ngFor="let item of product">{{item.value}}</td>
+  <tr *ngFor="let product of map.values()">
+    <td *ngFor="let item of product">
+    <span>{{item.value}}</span>  
+    </td>
   </tr>
-</table></div>
+</table>
+

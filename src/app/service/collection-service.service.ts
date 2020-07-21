@@ -3,11 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Collection } from '../bean/collection';
+import { error } from 'console';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CollectionServiceService {
+  
   
 
   private baseURL = "https://madrasmarketplaceapi.azurewebsites.net/";
@@ -18,7 +20,16 @@ export class CollectionServiceService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'}),
     observe: 'response' as 'body'
   };
-
+  getCollectionById(id:any): any {
+    const url = `${this.baseURL}collections/${id}`;
+    console.log(url);
+    return this.http
+    .get(url)
+    .pipe(
+      tap(_=>console.log(`fetched collection by id`)),
+      catchError(this.handleError(`Erro fetching collection by id`))
+    )
+  }
   getCollections() {
     const collectionURL = `${this.baseURL}collections/`;
     console.log(collectionURL);
@@ -29,9 +40,10 @@ export class CollectionServiceService {
       catchError(this.handleError(`Error in Fetching Collections`)));
   }
 
-  addCollection(collection_name: String)   {
+  addCollection(collection_name: String,parent_id:number)   {
     const collectionInsertURL = `${this.baseURL}collections/add`;
-    const body = JSON.stringify({"collection_name": collection_name,"parent_id":-1});
+    console.log(parent_id);
+    const body = JSON.stringify({"collection_name": collection_name,"parent_id":parent_id});
     console.log(collectionInsertURL);
     console.log(body);
 

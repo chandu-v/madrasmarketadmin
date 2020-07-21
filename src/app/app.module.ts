@@ -18,6 +18,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatIconModule} from '@angular/material/icon'; 
 import {MatListModule} from '@angular/material/list'; 
 import {MatExpansionModule} from '@angular/material/expansion'; 
+import { BlobModule } from 'angular-azure-blob-service';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     AddProductComponent
   ],
   imports: [
+    BlobModule.forRoot(),
+    MatSelectModule,
     MatExpansionModule,
     MatListModule,
     FormsModule,
