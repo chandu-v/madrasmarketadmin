@@ -2,8 +2,6 @@
 pause
 cp .\web.config .\dist\madras-market-admin\
 pause
-mv .\dist\madras-market-admin\
-pause
 git init
 pause
 git remote add origin https://github.com/chandu-v/madrasmarketplaceadmin-deploy
