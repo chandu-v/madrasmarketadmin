@@ -1,6 +1,6 @@
 # npm run build-prod
 pause
-cp .\web.config .\dist\madras-market-admin\
+copy .\web.config .\dist\madras-market-admin\
 pause
 git init
 pause
