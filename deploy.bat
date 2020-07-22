@@ -1,3 +1,4 @@
+
 copy .\web.config .\dist\madras-market-admin\
 git init
 git remote rm origin
