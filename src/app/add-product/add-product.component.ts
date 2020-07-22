@@ -21,9 +21,13 @@ const Config: UploadParams = {
 export class AddProductComponent implements OnInit {
 
   selectedValue: string;
-
+  selectedMetric: string;
   collections: Collection[] = [
   ];
+
+  metrics: string[] = [
+    'KG','LITRE','PCS'
+  ]
 
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef<
     HTMLInputElement
@@ -35,7 +39,6 @@ export class AddProductComponent implements OnInit {
   description_form_control = new FormControl('', [Validators.required]);
   upc_form_control = new FormControl('', [Validators.required]);
   quantity_form_control = new FormControl('', [Validators.required]);
-  metric_form_control = new FormControl('', [Validators.required]);
   image1_form_control = new FormControl('', [Validators.required]);
   image2_form_control = new FormControl('', [Validators.required]);
   mrp_form_control = new FormControl('', [Validators.required]);
@@ -95,7 +98,7 @@ export class AddProductComponent implements OnInit {
         "product_Attribute_EmbeddedId": {
           "attribute_id": 4
         },
-        "value": this.metric_form_control.value
+        "value": this.selectedMetric
       },
 
 
@@ -139,6 +142,12 @@ export class AddProductComponent implements OnInit {
           "attribute_id": 11
         },
         "value": this.sku_form_control.value
+      },
+      {
+        "product_Attribute_EmbeddedId": {
+          "attribute_id": 12
+        },
+        "value": `N${this.tamil_title_form_control.value}`
       }
     ]
 
@@ -152,6 +161,10 @@ export class AddProductComponent implements OnInit {
         break;
       }
     }
+    if( this.selectedValue == null || this.selectedMetric == null){
+      valid = false;
+      alert("Select a value from dropdown");
+    }
     if(!this.imageUploaded){
       alert("Image is getting uploaded. Please try again");
     }
@@ -164,13 +177,16 @@ export class AddProductComponent implements OnInit {
           this.description_form_control.setValue('');
           this.upc_form_control.setValue('');
           this.quantity_form_control.setValue('');
-          this.metric_form_control.setValue('');
+          this.selectedMetric = '';
+          this.selectedValue = '';
           this.image1_form_control.setValue('');
           this.image2_form_control.setValue('');
           this.mrp_form_control.setValue('');
           this.gst_form_control.setValue('');
           this.discount_form_control.setValue('');
           this.sku_form_control.setValue('');
+          this.tamil_title_form_control.setValue('');
+          alert(`Product Added Successfully!`)
         });
     }
   }

@@ -56,7 +56,15 @@
           metric:</label>
       </td>
       <td>
-        <input type="text" placeholder="KG" [value]="metric" [formControl]="metric_form_control">
+        <mat-form-field appearance="fill">
+          <mat-label>Metric</mat-label>
+          <mat-select [(ngModel)]="selectedMetric" name="metric">
+            <mat-option *ngFor="let food of metrics" [value]="food">
+              {{food}}
+            </mat-option>
+          </mat-select>
+      
+        </mat-form-field>
 
       </td>
     </tr>
@@ -124,6 +132,19 @@
 
       </td>
     </tr>
+
+    <tr>
+      <td>
+
+        <label>
+          Tamil Title:
+        </label>
+      </td>
+      <td>
+        <input type="text" placeholder="123456" [value]="tamil_title" [formControl]="tamil_title_form_control">
+
+      </td>
+    </tr>
     <tr colspan="2">
       <td>
         <button mat-raised-button color="primary" (click)="onSubmit()">Add</button>
@@ -131,24 +152,6 @@
       </td>
     </tr>
   </table>
-
-
-
-
-
-
-
-
-
-
-  <br>
-
-
-  <br>
-
-
-  <p> Selected food: {{selectedValue}} </p>
-
 
   <mat-spinner [style.visibility]="isHidden? 'hidden': 'visible'"></mat-spinner>
 </div>
