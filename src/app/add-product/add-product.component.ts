@@ -6,6 +6,8 @@ import { StorageSharedKeyCredential, BlobServiceClient } from '@azure/storage-bl
 import { attribute_master } from '../bean/attribute_master';
 import { Collection } from '../bean/collection';
 import { CollectionServiceService } from '../service/collection-service.service';
+import { Inventory } from '../bean/inventory';
+import { InventoryService } from '../service/inventory.service';
 
 const Config: UploadParams = {
   sas: 'my sas',
@@ -24,6 +26,7 @@ export class AddProductComponent implements OnInit {
   selectedMetric: string;
   collections: Collection[] = [
   ];
+  inventories:Inventory[] = null;
 
   metrics: string[] = [
     'KG','LITRE','PCS'
@@ -51,9 +54,14 @@ export class AddProductComponent implements OnInit {
 
   isHidden = true;
   files: FileList;
-  constructor(private productService: ProductServiceService,private collectionService: CollectionServiceService) { }
+  constructor(private productService: ProductServiceService,private collectionService: CollectionServiceService,private inventoryService:InventoryService) { }
 
   ngOnInit(): void {
+    this.inventoryService.getAll()
+    .subscribe(data=>{
+      this.inventories = JSON.parse(JSON.stringify(data));
+      console.log(this.inventories);
+    })
     this.collectionService.getCollections()
     .subscribe(data=>{
       console.log(data);
@@ -147,12 +155,25 @@ export class AddProductComponent implements OnInit {
         "product_Attribute_EmbeddedId": {
           "attribute_id": 12
         },
-        "value": `N${this.tamil_title_form_control.value}`
+        "value": `${this.tamil_title_form_control.value}`
       }
-    ]
+    ];
 
     let valid = true;
     console.log(product_attributes);
+    
+    if(this.inventories == null){
+      alert(`Inventories are loading. Please try again`);
+      valid = false;
+    }else{
+      this.inventories.forEach(element => {
+        if(element.sku == this.sku_form_control.value){
+          alert(`SKU already Exists. Please use a unique one`);
+          valid = false;
+        }
+      });
+    }
+
     for (let element of product_attributes) {
       console.log(element);
       if (element['value'] == '') {
