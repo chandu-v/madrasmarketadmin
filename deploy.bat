@@ -1,7 +1,6 @@
 
 copy .\web.config .\dist\madras-market-admin\
-move .\dist\madras-market-admin ..\deploy
-cd ..\deploy\madras-market
+cd .\dist\madras-market-admin\
 git init
 git remote rm origin
 git remote add origin https://github.com/chandu-v/madrasmarketplaceadmin-deploy
