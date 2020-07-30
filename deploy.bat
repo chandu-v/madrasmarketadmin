@@ -11,4 +11,5 @@ git commit -a
 git push --set-upstream origin master -f
 cd ..
 cd ..
+.\git-push.bat
 pause
