@@ -11,7 +11,4 @@ git commit -a
 git push --set-upstream origin master -f
 cd ..
 cd ..
-git add .
-git commit -a
-git push
 pause
