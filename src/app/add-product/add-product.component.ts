@@ -29,7 +29,7 @@ export class AddProductComponent implements OnInit {
   inventories:Inventory[] = null;
 
   metrics: string[] = [
-    'KG','LITRE','PCS'
+    'GRAMS','KG','ML','LITRE','PCS',
   ]
 
   @ViewChild('fileInput', { static: false }) fileInput: ElementRef<
@@ -65,7 +65,13 @@ export class AddProductComponent implements OnInit {
     this.collectionService.getCollections()
     .subscribe(data=>{
       console.log(data);
-      this.collections = JSON.parse(JSON.stringify(data));
+      let tempCollection : Collection[]= JSON.parse(JSON.stringify(data));
+      tempCollection.forEach(element => {
+        if(element.parent_id != -1){
+          this.collections.push(element);
+        }
+      });
+      
       console.log(this.collections);
     })
   }
@@ -217,7 +223,7 @@ export class AddProductComponent implements OnInit {
     this.files = files;
     // Enter your storage account name and shared key
     const account = "madrasmarketstorage";
-    const sas = "?sv=2019-10-10&ss=bfqt&srt=sco&sp=rwdlacupx&se=2020-07-28T20:45:28Z&st=2020-07-21T12:45:28Z&sip=0.0.0.0-255.255.255.255&spr=https,http&sig=MpcPKJK60r0dOrMohBB5AgO6PEx9nH0lVGRzj%2FBc%2FNk%3D";
+    const sas = "?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2070-07-30T21:34:10Z&st=2020-07-30T13:34:10Z&sip=0.0.0.0-255.255.255.255&spr=https,http&sig=Obg8AsUOKw1tMP9ueuHXABBC0LJeQ%2Fn8OeqtigEsFGY%3D";
     const blobServiceClient = new BlobServiceClient(
       `https://${account}.blob.core.windows.net${sas}`
     );
