@@ -7,15 +7,21 @@
 
   </a>
 </div>
-<table  >
-  <tr >
+<table>
+  <tr>
     <th *ngFor="let attribute of header">{{attribute.attribute_name}}</th>
 
   </tr>
   <tr *ngFor="let product of map.values()">
     <td *ngFor="let item of product">
-    <span>{{item.value}}</span>  
+      <span *ngIf="item.attribute_id != 5; else imageBlock">{{item.value}}</span>
+      <ng-template #imageBlock>
+
+        <img mat-card-image src="{{item.value}}" alt="Product Image" style="height: 100px;">
+
+
+
+      </ng-template>
     </td>
   </tr>
 </table>
-

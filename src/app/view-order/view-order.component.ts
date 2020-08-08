@@ -8,7 +8,8 @@ import { OrderService } from '../service/order.service';
   styleUrls: ['./view-order.component.css']
 })
 export class ViewOrderComponent implements OnInit {
-
+  displayedColumns: string[] = ['order_id', 'product_id', 'quantity','action'];
+  dataSource = [];
   orderId;
   orderDetails;
   constructor(private route:ActivatedRoute,private orderService:OrderService) { }
@@ -17,11 +18,12 @@ export class ViewOrderComponent implements OnInit {
     this.route.params.subscribe((data)=>{
       console.log(data);
       this.orderId = data['id']
-      this.orderService.getOrdersByOrderId(this.orderId).subscribe((data)=>{
-        this.orderDetails = JSON.parse(JSON.stringify(data));
-        console.log(this.orderDetails);
-      })
-    })
+      console.log(this.orderId);
+      this.orderService.getOrderItems(this.orderId).subscribe((data)=>{
+        console.log(JSON.parse(JSON.stringify(data)));
+        this.dataSource = JSON.parse(JSON.stringify(data));
+      });
+    });
   }
 
 }

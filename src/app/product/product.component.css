@@ -5,3 +5,9 @@ mat-list {
 table{
   border: 1px solid black;
 }
+.example-card {
+  max-width: 400px;
+}
+.mat-card-image{
+  height: 100px;
+}

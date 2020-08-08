@@ -1,0 +1,15 @@
+<mat-list role="list">
+    
+    <mat-list-item role="listitem" *ngFor="let element of productDetails">
+        
+        <span *ngIf="element.product_Attribute_EmbeddedId.attribute_id != 5; else imageBlock">{{element.value}}</span>
+      <ng-template #imageBlock>
+
+        <img mat-card-image src="{{element.value}}" alt="Product Image" style="height: 100px;">
+
+
+
+      </ng-template>
+    </mat-list-item>
+    
+  </mat-list>

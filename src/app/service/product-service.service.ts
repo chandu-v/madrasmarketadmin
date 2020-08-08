@@ -25,6 +25,15 @@ export class ProductServiceService {
     observe: 'response' as 'body'
   };
 
+  getProductsById(product_id:any):any{
+    const url = `${this.baseURL}products/get/${product_id}`;
+    console.log(url);
+    return this.http.get(url).pipe(
+      tap(_=>console.log(`fetched product details${product_id}`)),
+      catchError(this.handleError(`Error in fetching product details ${product_id}`))
+    )
+  }
+
   getProducts() {
     const collectionURL = `${this.baseURL}products/`;
     console.log(collectionURL);

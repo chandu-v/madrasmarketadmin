@@ -22,8 +22,8 @@ export class OrderService {
     return this.http
     .get(url)
     .pipe(
-      tap(_=>console.log(`fetched collection by id`)),
-      catchError(this.handleError(`Erro fetching collection by id`))
+      tap(_=>console.log(`fetched Order by id`)),
+      catchError(this.handleError(`Erro fetching Order by id`))
     )
   }
   getOrders() {
@@ -32,8 +32,19 @@ export class OrderService {
     return this.http
     .get(collectionURL)
     .pipe(
-      tap(_ => console.log(`fetched collections`)),
-      catchError(this.handleError(`Error in Fetching Collections`)));
+      tap(_ => console.log(`fetched Order`)),
+      catchError(this.handleError(`Error in Fetching Order`)));
+  }
+
+  getOrderItems(order_id:any):any{
+    const url = `${this.baseURL}order_item/getAllByOrder_id/${order_id}`;
+    console.log(url);
+    return this.http
+    .get(url)
+    .pipe(
+      tap(_=>console.log(`fetched order items`)),
+      catchError(this.handleError(`Error in Fetching OrderItems`))
+    )
   }
 
   /**
