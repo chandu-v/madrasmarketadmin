@@ -20,6 +20,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatExpansionModule} from '@angular/material/expansion'; 
 import { BlobModule } from 'angular-azure-blob-service';
 import {MatSelectModule} from '@angular/material/select';
+import { OrderComponent } from './order/order.component';
+import { ViewOrderComponent } from './view-order/view-order.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import {MatSelectModule} from '@angular/material/select';
     CollectionComponent,
     AddCollectionComponent,
     ProductComponent,
-    AddProductComponent
+    AddProductComponent,
+    OrderComponent,
+    ViewOrderComponent,
   ],
   imports: [
     BlobModule.forRoot(),
