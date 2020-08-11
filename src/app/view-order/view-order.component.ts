@@ -8,7 +8,7 @@ import { OrderService } from '../service/order.service';
   styleUrls: ['./view-order.component.css']
 })
 export class ViewOrderComponent implements OnInit {
-  displayedColumns: string[] = ['product_id','product_name', 'image_url','amount','quantity'];
+  displayedColumns: string[] = ['product_id','product_name', 'image_url','amount','size','quantity'];
   dataSource = [];
   orderId;
   orderDetails;
