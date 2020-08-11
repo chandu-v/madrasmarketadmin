@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: 'collection', component: CollectionComponent },
   { path: 'add-collection/:id', component: AddCollectionComponent },
   { path: 'add-product', component: AddProductComponent },
-  { path: 'order', component: OrderComponent },
-  { path: 'order/:id', component: ViewOrderComponent },
+  { path: 'order/:status_id', component: OrderComponent },
+  { path: 'order/details/:id', component: ViewOrderComponent },
   { path: 'product/:id', component: ViewProductComponent },
   
 

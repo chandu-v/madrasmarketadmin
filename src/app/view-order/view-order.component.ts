@@ -8,10 +8,11 @@ import { OrderService } from '../service/order.service';
   styleUrls: ['./view-order.component.css']
 })
 export class ViewOrderComponent implements OnInit {
-  displayedColumns: string[] = ['order_id', 'product_id', 'quantity','action'];
+  displayedColumns: string[] = ['product_id','product_name', 'image_url','amount','quantity'];
   dataSource = [];
   orderId;
   orderDetails;
+  total_cost;
   constructor(private route:ActivatedRoute,private orderService:OrderService) { }
 
   ngOnInit(): void {
@@ -22,6 +23,9 @@ export class ViewOrderComponent implements OnInit {
       this.orderService.getOrderItems(this.orderId).subscribe((data)=>{
         console.log(JSON.parse(JSON.stringify(data)));
         this.dataSource = JSON.parse(JSON.stringify(data));
+        if(this.dataSource.length>0){
+          this.total_cost = this.dataSource[0]['total_cost'];
+        }
       });
     });
   }

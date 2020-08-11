@@ -26,8 +26,8 @@ export class OrderService {
       catchError(this.handleError(`Erro fetching Order by id`))
     )
   }
-  getOrders() {
-    const collectionURL = `${this.baseURL}order_master/`;
+  getOrders(status_id:any) {
+    const collectionURL = `${this.baseURL}order_master/getAllOrdersByStatusId/v2/${status_id}`;
     console.log(collectionURL);
     return this.http
     .get(collectionURL)
@@ -37,7 +37,7 @@ export class OrderService {
   }
 
   getOrderItems(order_id:any):any{
-    const url = `${this.baseURL}order_item/getAllByOrder_id/${order_id}`;
+    const url = `${this.baseURL}order_master/getOrderItemsDetails/v2/${order_id}`;
     console.log(url);
     return this.http
     .get(url)
