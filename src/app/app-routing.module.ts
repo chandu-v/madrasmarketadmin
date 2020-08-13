@@ -7,6 +7,9 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { OrderComponent } from './order/order.component';
 import { ViewOrderComponent } from './view-order/view-order.component';
 import { ViewProductComponent } from './view-product/view-product.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { EditComponentComponent } from './edit-component/edit-component.component';
+import { ViewSliderImagesComponent } from './view-slider-images/view-slider-images.component';
 
 
 const routes: Routes = [
@@ -17,6 +20,9 @@ const routes: Routes = [
   { path: 'order/:status_id', component: OrderComponent },
   { path: 'order/details/:id', component: ViewOrderComponent },
   { path: 'product/:id', component: ViewProductComponent },
+  { path: 'product/edit/:id', component: EditProductComponent},
+  { path: 'collection/edit/:id', component: EditComponentComponent},
+  { path: 'slider', component: ViewSliderImagesComponent}
   
 
 ];

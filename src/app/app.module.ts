@@ -24,6 +24,9 @@ import { OrderComponent } from './order/order.component';
 import { ViewOrderComponent } from './view-order/view-order.component';
 import { ViewProductComponent } from './view-product/view-product.component';
 import {MatInputModule} from '@angular/material/input';
+import { EditProductComponent } from './edit-product/edit-product.component';
+import { EditComponentComponent } from './edit-component/edit-component.component';
+import { ViewSliderImagesComponent } from './view-slider-images/view-slider-images.component';
 
 
 @NgModule({
@@ -36,6 +39,9 @@ import {MatInputModule} from '@angular/material/input';
     OrderComponent,
     ViewOrderComponent,
     ViewProductComponent,
+    EditProductComponent,
+    EditComponentComponent,
+    ViewSliderImagesComponent,
   ],
   imports: [
     BlobModule.forRoot(),

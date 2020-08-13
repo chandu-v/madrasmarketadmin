@@ -1,38 +1,48 @@
 <div class="card-container">
   <a class="card" rel="noopener" href="add-product/">
-
     <button mat-raised-button color="primary">Add Product</button>
-
-
-
   </a>
   <br>
   <br>
   <form class="example-form">
     <mat-form-field class="example-full-width">
       <mat-label>Search</mat-label>
-      <input  matInput placeholder="Search" [(ngModel)]="searchterm" (keyup.enter)="searchProducts()" name="searchterm" #ctrl="ngModel">
+      <input matInput placeholder="Search" [(ngModel)]="searchterm" (keyup.enter)="searchProducts()" name="searchterm"
+        #ctrl="ngModel">
       <mat-icon matSuffix (click)="searchProducts()">search</mat-icon>
     </mat-form-field>
   </form>
 </div>
 
-<table>
-  <tr>
-    <th *ngFor="let attribute of header">{{attribute.attribute_name}}</th>
+<div>
+  <button mat-raised-button color="primary" (click)="goPrevious()" style="float: left;">
+    < Previous</button>
 
-  </tr>
-  <tr *ngFor="let product of map.values()">
-    <td *ngFor="let item of product">
-      <span *ngIf="item.attribute_id != 5; else imageBlock">{{item.value}}</span>
-      <ng-template #imageBlock>
+      <button mat-raised-button color="primary" (click)="getNext()" style="float: right;">Next ></button>
+</div>
+<br>
+<br>
+<div>
+  <table>
+    <tr>
+      <th *ngFor="let attribute of header">{{attribute.attribute_name}}</th>
+    </tr>
+    <tr *ngFor="let product of map.values()">
+     <a href="product/edit/{{product[0].product_id}}">
+      <td  style="cursor: pointer;" > <mat-icon >mode_edit</mat-icon> </td>
+    </a>
+      <td *ngFor="let item of product">
+        <span *ngIf="item.attribute_id != 5; else imageBlock">{{item.value}}</span>
+        <ng-template #imageBlock>
+          <img mat-card-image src="{{item.value}}" alt="Product Image" style="height: 100px;">
+        </ng-template>
+      </td>
+    </tr>
+  </table>
+</div>
+<div>
+  <button mat-raised-button color="primary" (click)="goPrevious()" style="float: left;">
+    < Previous</button>
 
-        <img mat-card-image src="{{item.value}}" alt="Product Image" style="height: 100px;">
-
-
-
-      </ng-template>
-    </td>
-  </tr>
-</table>
-
+      <button mat-raised-button color="primary" (click)="getNext()" style="float: right;">Next ></button>
+</div>

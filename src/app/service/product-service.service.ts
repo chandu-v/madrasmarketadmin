@@ -34,8 +34,8 @@ export class ProductServiceService {
     )
   }
 
-  getProducts() {
-    const collectionURL = `${this.baseURL}products/`;
+  getProducts(fromNumber:any) {
+    const collectionURL = `${this.baseURL}products/getProductsFrom/${fromNumber}`;
     console.log(collectionURL);
     return this.http.get(collectionURL).pipe(
       tap(_ => console.log(`fetched Products`)),
@@ -60,6 +60,17 @@ export class ProductServiceService {
       tap(_=> console.log(`added Products`)),
       catchError(this.handleError(`Error in adding products`))
     )
+  }
+
+  updateProduct(product_attributes:{product_Attribute_EmbeddedId:{product_id:number,attribute_id:number;};value:any}[]){
+    const url = `${this.baseURL}products/update`;
+    console.log(url);
+    console.log(product_attributes);
+    return this.http.post(url,product_attributes,this.httpOptions)
+    .pipe(
+      tap(_=>console.log(`updated products`)),
+      catchError(this.handleError(`Error in updating product`))
+    );
   }
 
   

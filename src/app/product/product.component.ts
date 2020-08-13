@@ -36,20 +36,51 @@ export class ProductComponent implements OnInit {
   header = [];
   map = new Map();
   searchterm :String = '';
+  fromNumber = 0;
   constructor(private productService: ProductServiceService, private attributeService: AttributeMasterServiceService) { }
 
   ngOnInit(): void {
     
-    this.productService.getProducts()
+    this.productService.getProducts(this.fromNumber)
     .subscribe(data => {
       this.processData(data);
     });
     this.attributeService.getAllAttribute()
     .subscribe(data=>{
-      this.header = JSON.parse(JSON.stringify(data));
+      let temp = [];
+      temp.push({
+        "attribute_id" : -1,
+        "attribute_name" : "Edit"
+      });
+      JSON.parse(JSON.stringify(data)).forEach(element => {
+        temp.push(element);
+      });
+      // temp.push();
+      
+      this.header = temp;
+      console.log(this.header);
       console.log(JSON.parse(JSON.stringify(data)));
 
     
+    });
+  }
+
+  goPrevious(){
+    if(this.fromNumber == 0){
+      return;
+    }
+    this.fromNumber = this.fromNumber-10;
+    this.productService.getProducts(this.fromNumber)
+    .subscribe(data => {
+      this.processData(data);
+    });
+  }
+
+  getNext(){
+    this.fromNumber = this.fromNumber+10;
+    this.productService.getProducts(this.fromNumber)
+    .subscribe(data => {
+      this.processData(data);
     });
   }
 
@@ -92,6 +123,11 @@ export class ProductComponent implements OnInit {
       this.dataSource = tempDataSource;
       console.log(this.dataSource);
       console.log(this.map);
+  }
+
+  editProduct(product:any){
+    console.log(product)
+    console.log("editProductClicked")
   }
 
 }
