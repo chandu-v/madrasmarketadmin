@@ -37,10 +37,11 @@ export class ProductComponent implements OnInit {
   map = new Map();
   searchterm :String = '';
   fromNumber = 0;
+  searchTriggered:boolean;
   constructor(private productService: ProductServiceService, private attributeService: AttributeMasterServiceService) { }
 
   ngOnInit(): void {
-    
+    this.searchTriggered = false;
     this.productService.getProducts(this.fromNumber)
     .subscribe(data => {
       this.processData(data);
@@ -66,6 +67,7 @@ export class ProductComponent implements OnInit {
   }
 
   goPrevious(){
+    
     if(this.fromNumber == 0){
       return;
     }
@@ -86,6 +88,11 @@ export class ProductComponent implements OnInit {
 
   searchProducts(){
     console.log("Search Triggered");
+    if(this.searchterm == ""){
+      this.searchTriggered = false;
+    }else{
+      this.searchTriggered = true;
+    }
     console.log(this.searchterm);
     this.productService.getProductsBySearchItems(this.searchterm).subscribe((data)=>{
       let processedData = JSON.parse(JSON.stringify(data));

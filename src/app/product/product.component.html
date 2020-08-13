@@ -14,7 +14,7 @@
   </form>
 </div>
 
-<div>
+<div *ngIf="!searchTriggered">
   <button mat-raised-button color="primary" (click)="goPrevious()" style="float: left;">
     < Previous</button>
 
@@ -40,7 +40,7 @@
     </tr>
   </table>
 </div>
-<div>
+<div *ngIf="!searchTriggered">
   <button mat-raised-button color="primary" (click)="goPrevious()" style="float: left;">
     < Previous</button>
 
