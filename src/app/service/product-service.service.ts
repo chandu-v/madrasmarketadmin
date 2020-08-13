@@ -42,6 +42,15 @@ export class ProductServiceService {
       catchError(this.handleError(`Error in Fetching Collections`)));
   }
 
+  getProductsBySearchItems(search:String){
+    let searchTerms  : String[]= search.split(",");
+    console.log(searchTerms)
+    const searchURL = `${this.baseURL}products/get/search`;
+    return this.http.post(searchURL,searchTerms,this.httpOptions).pipe(
+      tap(_=> console.log(`fetched Searched Products`)),
+      catchError(this.handleError(`Error while searching for products`)));
+  }
+
   add(product_attributes: { product_Attribute_EmbeddedId: { attribute_id: number; }; value: any; }[]) {
     const addProductUrl = `${this.baseURL}products/add`;
     console.log(addProductUrl);

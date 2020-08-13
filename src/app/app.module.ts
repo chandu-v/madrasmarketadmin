@@ -23,6 +23,8 @@ import {MatSelectModule} from '@angular/material/select';
 import { OrderComponent } from './order/order.component';
 import { ViewOrderComponent } from './view-order/view-order.component';
 import { ViewProductComponent } from './view-product/view-product.component';
+import {MatInputModule} from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { ViewProductComponent } from './view-product/view-product.component';
   ],
   imports: [
     BlobModule.forRoot(),
+    MatInputModule,
     MatSelectModule,
     MatExpansionModule,
     MatListModule,

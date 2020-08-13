@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductServiceService } from '../service/product-service.service';
 import { AttributeMasterServiceService } from '../service/attribute-master-service.service';
+import { FormsModule} from '@angular/forms'
 
 
 export interface PeriodicElement {
@@ -30,18 +31,45 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  displayedColumns: string[] = ['product_id', 'attribute_id', 'value'];
+  displayedColumns: string[] = ['product_id','product_name', 'product_description', 'upc','quantity','image','mrp','discount','category','sku','tamil-title'];
   dataSource = [];
   header = [];
   map = new Map();
+  searchterm :String = '';
   constructor(private productService: ProductServiceService, private attributeService: AttributeMasterServiceService) { }
 
   ngOnInit(): void {
-
     
     this.productService.getProducts()
     .subscribe(data => {
-      let jsonArr = JSON.parse(JSON.stringify(data));
+      this.processData(data);
+    });
+    this.attributeService.getAllAttribute()
+    .subscribe(data=>{
+      this.header = JSON.parse(JSON.stringify(data));
+      console.log(JSON.parse(JSON.stringify(data)));
+
+    
+    });
+  }
+
+  searchProducts(){
+    console.log("Search Triggered");
+    console.log(this.searchterm);
+    this.productService.getProductsBySearchItems(this.searchterm).subscribe((data)=>{
+      let processedData = JSON.parse(JSON.stringify(data));
+      console.log(processedData.body);
+      this.processData(processedData.body);
+      
+    });
+  }
+
+  processData(data:any){
+    this.dataSource = [];
+    this.map.clear();
+    console.log(data);
+    let jsonArr = JSON.parse(JSON.stringify(data));
+    console.log(jsonArr);
       let tempDataSource = [];
       jsonArr.forEach(element => {
         let product_id = element['product_Attribute_EmbeddedId']['product_id'];
@@ -64,14 +92,6 @@ export class ProductComponent implements OnInit {
       this.dataSource = tempDataSource;
       console.log(this.dataSource);
       console.log(this.map);
-    });
-    this.attributeService.getAllAttribute()
-    .subscribe(data=>{
-      this.header = JSON.parse(JSON.stringify(data));
-      console.log(JSON.parse(JSON.stringify(data)));
-
-    
-    });
   }
 
 }

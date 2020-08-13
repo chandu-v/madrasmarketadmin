@@ -6,7 +6,17 @@
 
 
   </a>
+  <br>
+  <br>
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Search</mat-label>
+      <input  matInput placeholder="Search" [(ngModel)]="searchterm" (keyup.enter)="searchProducts()" name="searchterm" #ctrl="ngModel">
+      <mat-icon matSuffix (click)="searchProducts()">search</mat-icon>
+    </mat-form-field>
+  </form>
 </div>
+
 <table>
   <tr>
     <th *ngFor="let attribute of header">{{attribute.attribute_name}}</th>
@@ -25,3 +35,4 @@
     </td>
   </tr>
 </table>
+
