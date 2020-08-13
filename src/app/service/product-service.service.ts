@@ -62,7 +62,7 @@ export class ProductServiceService {
     )
   }
 
-  updateProduct(product_attributes:{product_Attribute_EmbeddedId:{product_id:number,attribute_id:number;};value:any}[]){
+  updateProduct(product_attributes:any[]){
     const url = `${this.baseURL}products/update`;
     console.log(url);
     console.log(product_attributes);
