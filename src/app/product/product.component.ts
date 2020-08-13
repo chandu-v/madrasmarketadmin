@@ -90,6 +90,13 @@ export class ProductComponent implements OnInit {
     console.log("Search Triggered");
     if(this.searchterm == ""){
       this.searchTriggered = false;
+      this.fromNumber = 0;
+      this.productService.getProducts(this.fromNumber)
+    .subscribe(data => {
+      this.processData(data);
+    });
+    return;
+
     }else{
       this.searchTriggered = true;
     }
