@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TransactionServiceService } from '../service/transaction-service.service';
 
 @Component({
   selector: 'app-view-transaction',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-transaction.component.css']
 })
 export class ViewTransactionComponent implements OnInit {
-
-  constructor() { }
+  displayedColumns: string[] = ['order_id', 'amount', 'transaction_time','information','status','transaction_id','user_id'];
+  dataSource = [];
+  constructor(private transactionService:TransactionServiceService) { }
 
   ngOnInit(): void {
+    this.transactionService.getAllTransactions().subscribe((data)=>{
+      this.dataSource = JSON.parse(JSON.stringify(data));
+      console.log(this.dataSource);
+    })
   }
 
 }

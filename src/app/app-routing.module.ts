@@ -10,6 +10,7 @@ import { ViewProductComponent } from './view-product/view-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { EditComponentComponent } from './edit-component/edit-component.component';
 import { ViewSliderImagesComponent } from './view-slider-images/view-slider-images.component';
+import { ViewTransactionComponent } from './view-transaction/view-transaction.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,8 @@ const routes: Routes = [
   { path: 'product/:id', component: ViewProductComponent },
   { path: 'product/edit/:id', component: EditProductComponent},
   { path: 'collection/edit/:id', component: EditComponentComponent},
-  { path: 'slider', component: ViewSliderImagesComponent}
+  { path: 'slider', component: ViewSliderImagesComponent},
+  { path: 'transaction',component: ViewTransactionComponent}
   
 
 ];
