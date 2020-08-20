@@ -27,6 +27,7 @@ import {MatInputModule} from '@angular/material/input';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { EditComponentComponent } from './edit-component/edit-component.component';
 import { ViewSliderImagesComponent } from './view-slider-images/view-slider-images.component';
+import { ViewTransactionComponent } from './view-transaction/view-transaction.component';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { ViewSliderImagesComponent } from './view-slider-images/view-slider-imag
     EditProductComponent,
     EditComponentComponent,
     ViewSliderImagesComponent,
+    ViewTransactionComponent,
   ],
   imports: [
     BlobModule.forRoot(),
