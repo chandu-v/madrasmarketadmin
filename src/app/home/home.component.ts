@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-edit-component',
-  templateUrl: './edit-component.component.html',
-  styleUrls: ['./edit-component.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class EditComponentComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
+  user_name = "";
+  password = "";
+  
   constructor() { }
 
   ngOnInit(): void {
@@ -14,6 +17,11 @@ export class EditComponentComponent implements OnInit {
       console.log(`In session`)
       return;
     }
+  }
+  
+
+  onSubmit(){
+
   }
 
 }

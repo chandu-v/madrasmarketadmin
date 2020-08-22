@@ -28,6 +28,8 @@ import { EditProductComponent } from './edit-product/edit-product.component';
 import { EditComponentComponent } from './edit-component/edit-component.component';
 import { ViewSliderImagesComponent } from './view-slider-images/view-slider-images.component';
 import { ViewTransactionComponent } from './view-transaction/view-transaction.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -44,6 +46,8 @@ import { ViewTransactionComponent } from './view-transaction/view-transaction.co
     EditComponentComponent,
     ViewSliderImagesComponent,
     ViewTransactionComponent,
+    LoginComponent,
+    HomeComponent,
   ],
   imports: [
     BlobModule.forRoot(),

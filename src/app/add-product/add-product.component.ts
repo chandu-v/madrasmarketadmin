@@ -57,6 +57,10 @@ export class AddProductComponent implements OnInit {
   constructor(private productService: ProductServiceService,private collectionService: CollectionServiceService,private inventoryService:InventoryService) { }
 
   ngOnInit(): void {
+    if (sessionStorage.jwt == "null" || sessionStorage.jwt == undefined) {
+      console.log(`In session`)
+      return;
+    }
     this.inventoryService.getAll()
     .subscribe(data=>{
       this.inventories = JSON.parse(JSON.stringify(data));

@@ -19,6 +19,10 @@ export class AddCollectionComponent implements OnInit {
   constructor( private route: ActivatedRoute, private collectionService : CollectionServiceService) { }
 
   ngOnInit(): void {
+    if (sessionStorage.jwt == "null" || sessionStorage.jwt == undefined) {
+      console.log(`In session`)
+      return;
+    }
     this.route.params.subscribe(params=>{
       console.log(params);
       this.parent_id = params['id']

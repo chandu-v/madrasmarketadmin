@@ -12,6 +12,10 @@ export class ViewTransactionComponent implements OnInit {
   constructor(private transactionService:TransactionServiceService) { }
 
   ngOnInit(): void {
+    if (sessionStorage.jwt == "null" || sessionStorage.jwt == undefined) {
+      console.log(`In session`)
+      return;
+    }
     this.transactionService.getAllTransactions().subscribe((data)=>{
       this.dataSource = JSON.parse(JSON.stringify(data));
       console.log(this.dataSource);

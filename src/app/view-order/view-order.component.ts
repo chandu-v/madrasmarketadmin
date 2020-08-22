@@ -16,6 +16,10 @@ export class ViewOrderComponent implements OnInit {
   constructor(private route:ActivatedRoute,private orderService:OrderService) { }
 
   ngOnInit(): void {
+    if (sessionStorage.jwt == "null" || sessionStorage.jwt == undefined) {
+      console.log(`In session`)
+      return;
+    }
     this.route.params.subscribe((data)=>{
       console.log(data);
       this.orderId = data['id']

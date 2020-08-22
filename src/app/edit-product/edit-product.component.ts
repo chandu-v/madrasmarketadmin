@@ -20,6 +20,10 @@ export class EditProductComponent implements OnInit {
   constructor(private route: ActivatedRoute, private productService: ProductServiceService) { }
 
   ngOnInit(): void {
+    if (sessionStorage.jwt == "null" || sessionStorage.jwt == undefined) {
+      console.log(`In session`)
+      return;
+    }
     this.route.params.subscribe((data) => {
       console.log(data);
       this.product_id = data["id"];

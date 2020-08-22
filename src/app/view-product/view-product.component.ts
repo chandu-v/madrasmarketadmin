@@ -14,6 +14,10 @@ export class ViewProductComponent implements OnInit {
   constructor(private route:ActivatedRoute,private productService:ProductServiceService) { }
 
   ngOnInit(): void {
+    if (sessionStorage.jwt == "null" || sessionStorage.jwt == undefined) {
+      console.log(`In session`)
+      return;
+    }
     this.route.params.subscribe((data)=>{
       this.productId = data['id'];
       this.productService.getProductsById(this.productId).subscribe((data)=>{

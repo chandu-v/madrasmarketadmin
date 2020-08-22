@@ -41,6 +41,10 @@ export class ProductComponent implements OnInit {
   constructor(private productService: ProductServiceService, private attributeService: AttributeMasterServiceService) { }
 
   ngOnInit(): void {
+    if (sessionStorage.jwt == "null" || sessionStorage.jwt == undefined) {
+      console.log(`In session`)
+      return;
+    }
     this.searchTriggered = false;
     this.productService.getProducts(this.fromNumber)
     .subscribe(data => {

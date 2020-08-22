@@ -15,7 +15,10 @@ export class OrderComponent implements OnInit {
   constructor(private orderService:OrderService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    if (sessionStorage.jwt == "null" || sessionStorage.jwt == undefined) {
+      console.log(`In session`)
+      return;
+    }
     this.route.params.subscribe((data)=>{
       console.log(data);
       let status_id = data['status_id'];
