@@ -20,7 +20,7 @@ export class AppComponent {
     this.authService.validateToken(sessionStorage.jwt).subscribe((data)=>{
       console.log(data);
       if(data){
-        this.router.navigateByUrl('/order/0');
+        // this.router.navigateByUrl('/order/0');
       }else{
         this.router.navigateByUrl('/login')
       }
