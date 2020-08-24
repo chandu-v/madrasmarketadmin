@@ -2,12 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OrderService } from '../service/order.service';
 
+interface OrderStatus {
+  value: string;
+  viewValue: string;
+}
+
+
+
 @Component({
   selector: 'app-view-order',
   templateUrl: './view-order.component.html',
   styleUrls: ['./view-order.component.css']
 })
 export class ViewOrderComponent implements OnInit {
+
+  selectedValue: string;
+
+  orderStatuses: OrderStatus[] = [
+    {value: '0', viewValue: 'Order Placed'},
+    // {value: '4', viewValue: 'Out For Delivery'},
+    {value: '2', viewValue: 'Order Delivered'}
+  ];
+
   displayedColumns: string[] = ['product_id','product_name', 'image_url','amount','size','quantity'];
   dataSource = [];
   orderId;
@@ -32,6 +48,15 @@ export class ViewOrderComponent implements OnInit {
         }
       });
     });
+  }
+  updateOrderStatus(){
+    if(this.selectedValue == undefined){
+      alert("Please select a Status");
+    }
+    console.log(this.selectedValue);
+    this.orderService.updateOrderStatus(this.selectedValue,this.orderId).subscribe((data)=>{
+      alert(`Successfully updated the order status`);
+    })
   }
 
 }

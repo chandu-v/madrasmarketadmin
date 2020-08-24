@@ -4,6 +4,23 @@
     <br>
     <br>
     <button mat-raised-button color="primary">Total Cost: {{total_cost}}</button>
+    <br>
+    <br>
+
+    <form>
+        <h4>Change Order Status To:</h4>
+        <mat-form-field appearance="fill">
+          <mat-label>Select Order Status</mat-label>
+          <mat-select [(ngModel)]="selectedValue" name="food">
+            <mat-option *ngFor="let orderStatus of orderStatuses" [value]="orderStatus.value">
+              {{orderStatus.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary" style="margin: 10px;" (click)="updateOrderStatus()">Update Order Status</button>
+       
+      </form>
+      
 
 </div>
 

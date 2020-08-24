@@ -47,6 +47,15 @@ export class OrderService {
     )
   }
 
+  updateOrderStatus(statusId:any,order_id:any){
+    let url = `${this.baseURL}order_master/update/${order_id}/${statusId}`;
+    console.log(url);
+    return  this.http.get(url).pipe(
+      tap(_=>console.log(`Order Status Updated`)),
+      catchError(this.handleError( `Error occured in updating order status`))
+    )
+  }
+
   /**
 * Handle Http operation that failed.
 * Let the app continue.
