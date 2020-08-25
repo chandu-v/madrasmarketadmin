@@ -13,6 +13,10 @@ import { ViewSliderImagesComponent } from './view-slider-images/view-slider-imag
 import { ViewTransactionComponent } from './view-transaction/view-transaction.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { DeliveryBoyComponent } from './delivery-boy/delivery-boy.component';
+import { AddDeliveryBoyComponent } from './add-delivery-boy/add-delivery-boy.component';
+import { AssociateComponent } from './associate/associate.component';
+import { AddAssociateComponent } from './add-associate/add-associate.component';
 
 
 const routes: Routes = [
@@ -28,7 +32,11 @@ const routes: Routes = [
   { path: 'slider', component: ViewSliderImagesComponent},
   { path: 'transaction',component: ViewTransactionComponent},
   { path: 'login',component: LoginComponent},
-  {path:'home',component:HomeComponent}
+  {path:'home',component:HomeComponent},
+  {path:'delivery_boy',component:DeliveryBoyComponent},
+  {path:'delivery_boy/add',component:AddDeliveryBoyComponent},
+  {path:'associate',component:AssociateComponent},
+  {path:'associate/add',component:AddAssociateComponent}
   
 
 ];

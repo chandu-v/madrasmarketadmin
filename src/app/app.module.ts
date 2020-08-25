@@ -30,6 +30,10 @@ import { ViewSliderImagesComponent } from './view-slider-images/view-slider-imag
 import { ViewTransactionComponent } from './view-transaction/view-transaction.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { DeliveryBoyComponent } from './delivery-boy/delivery-boy.component';
+import { AssociateComponent } from './associate/associate.component';
+import { AddDeliveryBoyComponent } from './add-delivery-boy/add-delivery-boy.component';
+import { AddAssociateComponent } from './add-associate/add-associate.component';
 
 
 @NgModule({
@@ -48,6 +52,10 @@ import { HomeComponent } from './home/home.component';
     ViewTransactionComponent,
     LoginComponent,
     HomeComponent,
+    DeliveryBoyComponent,
+    AssociateComponent,
+    AddDeliveryBoyComponent,
+    AddAssociateComponent,
   ],
   imports: [
     BlobModule.forRoot(),
