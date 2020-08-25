@@ -1,1 +1,18 @@
-<p>add-associate works!</p>
+<form class="example-form" >
+    <mat-form-field class="example-full-width">
+        <mat-label>Associate Name</mat-label>
+        <input matInput placeholder="Eg. Name" [(ngModel)]="associate_name" name="associate_name" #ctrl="ngModel">
+        <br>
+
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Referral Code</mat-label>
+        <input matInput placeholder="REFERRAL_CODE" [(ngModel)]="referral_code" name="referral_code"
+            #ctrl="ngModel">
+
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="onSubmit()" style="float: left;">
+        Add</button>
+</form>

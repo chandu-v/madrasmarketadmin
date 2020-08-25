@@ -1,1 +1,18 @@
-<p>add-delivery-boy works!</p>
+<form class="example-form" >
+    <mat-form-field class="example-full-width">
+        <mat-label>Boy Name</mat-label>
+        <input matInput placeholder="Eg. Name" [(ngModel)]="delivery_boy_name" name="delivery_boy_name" #ctrl="ngModel">
+        <br>
+
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Boy Phone Number</mat-label>
+        <input matInput placeholder="9876543210" [(ngModel)]="delivery_boy_phone_number" name="delivery_boy_phone_number"
+            #ctrl="ngModel">
+
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="onSubmit()" style="float: left;">
+        Add</button>
+</form>

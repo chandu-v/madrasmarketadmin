@@ -7,6 +7,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class DeliveryBoyService {
+ 
   private baseURL = "https://madrasmarketplaceapi.azurewebsites.net/";
   constructor(private http: HttpClient) { }
 
@@ -34,6 +35,27 @@ export class DeliveryBoyService {
       catchError(this.handleError(`Error in fetching all the delivery boys`)))
     )
   }
+
+  save(delivery_boy_name: any, delivery_boy_phone_number: any) {
+    let url = `${this.baseURL}deliveryBoy/save`;
+    let requestBody= `{
+      "boy_name":"${delivery_boy_name}",
+      "phone_number":"${delivery_boy_phone_number}",
+      "password":"demo",
+      "status":0,
+      "lat":"0",
+      "lon":"0"
+
+    }`;
+
+    
+    console.log(requestBody);
+    return this.http.post(url,requestBody,this.httpOptions).pipe(
+      tap(_=>console.log("Saved Successfully")),
+      catchError(this.handleError(`Error occured while inserting delivery boy`))
+    )
+  }
+
   /**
 * Handle Http operation that failed.
 * Let the app continue.

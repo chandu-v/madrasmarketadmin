@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { associate } from '../bean/associate';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssociateService {
+  
   private baseURL = "https://madrasmarketplaceapi.azurewebsites.net/";
 
   constructor(private http: HttpClient) { }
@@ -22,6 +24,19 @@ export class AssociateService {
     return this.http.get(url).pipe(
       tap(_=>console.log(`Fetched all the associates`)),
       catchError(this.handleError(`Error Occured in Fetching the Associates Data`))
+    )
+  }
+
+  save(associateObj: associate) {
+    let url = `${this.baseURL}associate/save`;
+    let requestBody = `{
+      "associate_name":"${associateObj.associate_name}",
+      "associate_phone_number":"${associateObj.associate_phone_number}"
+    }`;
+    
+    return this.http.post(url,requestBody,this.httpOptions).pipe(
+      tap(_=>console.log(`Inserted Associate`)),
+      catchError(this.handleError(`Error While Inserting Associate`))
     )
   }
 
