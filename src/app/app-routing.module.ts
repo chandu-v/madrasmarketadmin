@@ -17,6 +17,7 @@ import { DeliveryBoyComponent } from './delivery-boy/delivery-boy.component';
 import { AddDeliveryBoyComponent } from './add-delivery-boy/add-delivery-boy.component';
 import { AssociateComponent } from './associate/associate.component';
 import { AddAssociateComponent } from './add-associate/add-associate.component';
+import { UserComponent } from './user/user.component';
 
 
 const routes: Routes = [
@@ -36,7 +37,8 @@ const routes: Routes = [
   {path:'delivery_boy',component:DeliveryBoyComponent},
   {path:'delivery_boy/add',component:AddDeliveryBoyComponent},
   {path:'associate',component:AssociateComponent},
-  {path:'associate/add',component:AddAssociateComponent}
+  {path:'associate/add',component:AddAssociateComponent},
+  {path:'user',component:UserComponent}
   
 
 ];
