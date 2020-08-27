@@ -37,6 +37,8 @@ import { AddAssociateComponent } from './add-associate/add-associate.component';
 import { UserComponent } from './user/user.component';
 import { ViewReferralsComponent } from './view-referrals/view-referrals.component';
 import {MatSidenavModule} from '@angular/material/sidenav'; 
+import {MatToolbarModule} from '@angular/material/toolbar'; 
+
 
 @NgModule({
   declarations: [
@@ -62,6 +64,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     ViewReferralsComponent,
   ],
   imports: [
+    MatToolbarModule,
     MatSidenavModule,
     BlobModule.forRoot(),
     MatInputModule,

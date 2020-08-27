@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 
   user_name = "";
   password = "";
+  clicked_items = 'DashBoard'
   
   constructor(private router:Router,private authenticateService:AuthenticationService) { }
 
@@ -31,7 +32,9 @@ export class LoginComponent implements OnInit {
         this.password = "";
       }else{
          //This is where its broke - below:    
-         sessionStorage.setItem("jwt",response.body.jwt);   
+         sessionStorage.setItem("jwt",response.body.jwt);  
+  this.clicked_items = 'Orders'
+
     window.location.replace('/order/0');
 
         //  this.router.navigateByUrl('/');
