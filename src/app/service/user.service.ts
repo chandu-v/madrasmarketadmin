@@ -7,6 +7,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService {
+ 
   private baseURL = "https://madrasmarketplaceapi.azurewebsites.net/";
   constructor(private http: HttpClient) { }
 
@@ -19,13 +20,20 @@ export class UserService {
   getAllUsers() {
 
     const url = `${this.baseURL}users`
-    console.log(url);
     return this.http.get(url)
     .pipe(
       tap(_=>console.log(`retrieved all users`)),
       catchError(this.handleError(`Errors in getting users`))
     )
   }
+  getAllUsersById(arg0: any) {
+
+    const url = `${this.baseURL}users/${arg0}`
+    return this.http.get(url)
+    .pipe(
+      tap(_=>console.log(`retrieved all users`)),
+      catchError(this.handleError(`Errors in getting users`))
+    )  }
 
   /**
 * Handle Http operation that failed.

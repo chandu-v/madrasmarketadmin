@@ -37,9 +37,9 @@ const routes: Routes = [
   {path:'home',component:HomeComponent},
   {path:'delivery_boy',component:DeliveryBoyComponent},
   {path:'delivery_boy/add',component:AddDeliveryBoyComponent},
-  {path:'associate',component:AssociateComponent},
+  {path:'associate/:id',component:AssociateComponent},
   {path:'associate/add',component:AddAssociateComponent},
-  {path:'user',component:UserComponent},
+  {path:'user/:id',component:UserComponent},
   {path:'view-referrals/:id',component:ViewReferralsComponent}
   
 

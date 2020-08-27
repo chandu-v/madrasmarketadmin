@@ -23,7 +23,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="associate_id">
         <th mat-header-cell *matHeaderCellDef> Associate Id </th>
-        <td mat-cell *matCellDef="let element"> {{element.associate_id}} </td>
+        <td mat-cell *matCellDef="let element"><a href="associate/{{element.associate_id}}">{{element.associate_id}} </a> </td>
       </ng-container>
   <!-- Name Column -->
   <ng-container matColumnDef="time">

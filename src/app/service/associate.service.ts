@@ -8,6 +8,7 @@ import { associate } from '../bean/associate';
   providedIn: 'root'
 })
 export class AssociateService {
+ 
   
   private baseURL = "https://madrasmarketplaceapi.azurewebsites.net/";
 
@@ -21,6 +22,14 @@ export class AssociateService {
 
   getAllAssociates(){
     let url = `${this.baseURL}associate`;
+    return this.http.get(url).pipe(
+      tap(_=>console.log(`Fetched all the associates`)),
+      catchError(this.handleError(`Error Occured in Fetching the Associates Data`))
+    )
+  }
+
+  getAllAssociatesById(arg0: any) {
+    let url = `${this.baseURL}associate/${arg0}`;
     return this.http.get(url).pipe(
       tap(_=>console.log(`Fetched all the associates`)),
       catchError(this.handleError(`Error Occured in Fetching the Associates Data`))
