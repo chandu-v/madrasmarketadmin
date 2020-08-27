@@ -33,6 +33,7 @@ export class AppComponent {
       if (data) {
         // this.router.navigateByUrl('/order/0');
       } else {
+        this.clicked_items = 'Login'
         this.router.navigateByUrl('/login')
       }
     })
