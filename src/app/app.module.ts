@@ -35,6 +35,7 @@ import { AssociateComponent } from './associate/associate.component';
 import { AddDeliveryBoyComponent } from './add-delivery-boy/add-delivery-boy.component';
 import { AddAssociateComponent } from './add-associate/add-associate.component';
 import { UserComponent } from './user/user.component';
+import { ViewReferralsComponent } from './view-referrals/view-referrals.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { UserComponent } from './user/user.component';
     AddDeliveryBoyComponent,
     AddAssociateComponent,
     UserComponent,
+    ViewReferralsComponent,
   ],
   imports: [
     BlobModule.forRoot(),

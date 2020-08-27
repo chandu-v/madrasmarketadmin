@@ -3,7 +3,13 @@
 
     <button mat-raised-button color="primary">Add New Associate</button>
 
+  </a>
+  <br>
+  <br>
 
+  <a class="card" rel="noopener" href="view-referrals/-1">
+
+    <button mat-raised-button color="primary">View All Referrals</button>
 
   </a>
 </div>
@@ -30,7 +36,16 @@
         <th mat-header-cell *matHeaderCellDef> Referral Code </th>
         <td mat-cell *matCellDef="let element"> {{element.associate_phone_number}} </td>
       </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="view-referrals">
+    <th mat-header-cell *matHeaderCellDef> View Referrals </th>
+    <td mat-cell *matCellDef="let element"><a class="card" rel="noopener" href="view-referrals/{{element.associate_id}}">
+
+      <button mat-raised-button color="primary">View {{element.associate_name}} Referrals</button>
   
+    </a>  </td>
+  </ng-container>
+
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

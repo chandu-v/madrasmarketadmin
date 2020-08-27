@@ -9,7 +9,7 @@ import { associate } from '../bean/associate';
 })
 export class AssociateComponent implements OnInit {
 
-  displayedColumns = ['associate_id','associate_name','associate_referral_code']
+  displayedColumns = ['associate_id','associate_name','associate_referral_code','view-referrals']
   associates:associate[] = []
   constructor(private associateService:AssociateService) { }
 

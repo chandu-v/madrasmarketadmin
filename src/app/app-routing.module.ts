@@ -18,6 +18,7 @@ import { AddDeliveryBoyComponent } from './add-delivery-boy/add-delivery-boy.com
 import { AssociateComponent } from './associate/associate.component';
 import { AddAssociateComponent } from './add-associate/add-associate.component';
 import { UserComponent } from './user/user.component';
+import { ViewReferralsComponent } from './view-referrals/view-referrals.component';
 
 
 const routes: Routes = [
@@ -38,7 +39,8 @@ const routes: Routes = [
   {path:'delivery_boy/add',component:AddDeliveryBoyComponent},
   {path:'associate',component:AssociateComponent},
   {path:'associate/add',component:AddAssociateComponent},
-  {path:'user',component:UserComponent}
+  {path:'user',component:UserComponent},
+  {path:'view-referrals/:id',component:ViewReferralsComponent}
   
 
 ];
