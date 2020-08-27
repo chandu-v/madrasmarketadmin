@@ -36,6 +36,15 @@ export class DeliveryBoyService {
     )
   }
 
+  getAllDeliveryBoyByStatusId(arg0: any) {
+    let url = `${this.baseURL}deliveryBoy/status/${arg0}`
+    return this.http.get(url)
+    .pipe(
+      tap(_=>console.log(`fetched All Delivery Boys`),
+      catchError(this.handleError(`Error in fetching all the delivery boys`)))
+    )  }
+ 
+
   save(delivery_boy_name: any, delivery_boy_phone_number: any) {
     let url = `${this.baseURL}deliveryBoy/save`;
     let requestBody= `{

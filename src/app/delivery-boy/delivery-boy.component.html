@@ -1,11 +1,17 @@
 <div class="card-container">
   <a class="card" rel="noopener" href="delivery_boy/add">
-
     <button mat-raised-button color="primary">Add New Delivery Boy</button>
-
-
-
   </a>
+  <br>
+  <br>
+    <div >
+      <a class="card" rel="noopener" href="delivery_boy/{{getStatus}}">
+
+        <button mat-raised-button color="primary">{{view_what}}</button>
+      </a>
+    </div>  
+    
+    
 </div>
 <table mat-table [dataSource]="delivery_boys" class="mat-elevation-z8">
 

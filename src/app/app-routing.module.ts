@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'transaction',component: ViewTransactionComponent},
   { path: 'login',component: LoginComponent},
   {path:'home',component:HomeComponent},
-  {path:'delivery_boy',component:DeliveryBoyComponent},
+  {path:'delivery_boy/:status',component:DeliveryBoyComponent},
   {path:'delivery_boy/add',component:AddDeliveryBoyComponent},
   {path:'associate/:id',component:AssociateComponent},
   {path:'associate/add',component:AddAssociateComponent},

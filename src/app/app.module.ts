@@ -36,7 +36,7 @@ import { AddDeliveryBoyComponent } from './add-delivery-boy/add-delivery-boy.com
 import { AddAssociateComponent } from './add-associate/add-associate.component';
 import { UserComponent } from './user/user.component';
 import { ViewReferralsComponent } from './view-referrals/view-referrals.component';
-
+import {MatSidenavModule} from '@angular/material/sidenav'; 
 
 @NgModule({
   declarations: [
@@ -62,6 +62,7 @@ import { ViewReferralsComponent } from './view-referrals/view-referrals.componen
     ViewReferralsComponent,
   ],
   imports: [
+    MatSidenavModule,
     BlobModule.forRoot(),
     MatInputModule,
     MatSelectModule,

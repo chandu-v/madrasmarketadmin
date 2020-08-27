@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DeliveryBoyService } from '../service/delivery-boy.service';
 import { delivery_boy } from '../bean/delivery_boy';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-delivery-boy',
@@ -11,13 +12,22 @@ export class DeliveryBoyComponent implements OnInit {
 
   displayedColumns : string[] = ['boy_id','boy_name','boy_phone_number','status']
   delivery_boys:delivery_boy[] = [];
-  constructor(private delivery_boy_service:DeliveryBoyService) { }
+  getStatus:number ;
+  view_what;
+  constructor(private route:ActivatedRoute,private delivery_boy_service:DeliveryBoyService) { }
 
   ngOnInit(): void {
-    this.delivery_boy_service.getAllDeliveryBoy().subscribe((data)=>{
-      this.delivery_boys =  JSON.parse(JSON.stringify(data));
-      console.log(this.delivery_boys)
+    
+    this.route.params.subscribe((data)=>{
+      console.log(data['status']);
+      this.getStatus = data['status']==1?0:1;
+      this.view_what = data['status']==1?'View Active Delivery Persion':'View InActive Delivery Persion';
+      this.delivery_boy_service.getAllDeliveryBoyByStatusId(data['status']).subscribe((data)=>{
+        this.delivery_boys =  JSON.parse(JSON.stringify(data));
+        console.log(this.delivery_boys)
+      })
     })
+   
   }
 
 }
