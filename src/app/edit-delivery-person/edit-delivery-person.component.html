@@ -1,0 +1,29 @@
+<form class="example-form" >
+    <mat-form-field class="example-full-width">
+        <mat-label>Boy Name</mat-label>
+        <input matInput placeholder="Eg. Name" [(ngModel)]="delivery_boy_name" name="delivery_boy_name" #ctrl="ngModel">
+        <br>
+
+    </mat-form-field>
+    <br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Boy Phone Number</mat-label>
+        <input matInput placeholder="9876543210" [(ngModel)]="delivery_boy_phone_number" name="delivery_boy_phone_number"
+            #ctrl="ngModel">
+
+    </mat-form-field>
+    <br>
+    
+    <mat-form-field class="example-full-width">
+
+    <mat-label>Select Delivery Person Status</mat-label>
+    <mat-select [(ngModel)]="delivery_boy_status" name="food">
+      <mat-option *ngFor="let status of boyStatus" [value]="status.value">
+        {{status.viewValue}}
+      </mat-option>
+    </mat-select>
+    </mat-form-field>
+    <br>
+    <button mat-raised-button color="primary" (click)="updateDetails()" style="float: left;">
+        Update</button>
+</form>
