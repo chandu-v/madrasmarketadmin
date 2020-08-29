@@ -42,6 +42,8 @@ export class EditAssociateComponent implements OnInit {
       console.log(data);
       if(data == undefined){
         alert('referral code already exists use a different one')
+      }else{
+        alert('Updated Successfully!');
       }
     })
   }

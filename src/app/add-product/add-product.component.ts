@@ -222,6 +222,7 @@ export class AddProductComponent implements OnInit {
     }
   }
   async onSelected(files: FileList): Promise<void> {
+    this.image1Url = "https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"
     this.imageUploaded = false;
     this.fileInput.nativeElement.value === '';
     this.files = files;

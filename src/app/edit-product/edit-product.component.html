@@ -6,6 +6,15 @@
 
     </mat-form-field>
     <br>
+    <!-- <mat-form-field class="example-full-width">
+        <mat-label>Image:</mat-label> -->
+        <!-- <input matInput style="display: none" type="file" #fileInput (change)="onSelected($event.target.files)" />
+        <button  mat-raised-button color="primary" (click)="showFileDialog()">Click here to Image</button> -->
+    <!-- </mat-form-field> -->
+    <input style="display: none" type="file" #fileInput (change)="onSelected($event.target.files)" />
+    <button mat-button color="primary" (click)="showFileDialog()">Click Here to Update Image</button>
+    <img src="{{image1Url}}" alt="product_image" style="width: 100px;height:100px"/>
+    <br>
     <mat-form-field class="example-full-width">
         <mat-label>Product Description</mat-label>
         <textarea matInput placeholder="Product Description" [(ngModel)]="product_description" name="product_description"

@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductServiceService } from '../service/product-service.service';
+import { BlobServiceClient } from '@azure/storage-blob';
 
 @Component({
   selector: 'app-edit-product',
@@ -8,6 +9,12 @@ import { ProductServiceService } from '../service/product-service.service';
   styleUrls: ['./edit-product.component.css']
 })
 export class EditProductComponent implements OnInit {
+  @ViewChild('fileInput', { static: false }) fileInput: ElementRef<
+    HTMLInputElement
+  >;
+  files: FileList;
+  imageUploaded = false;
+  image1Url = '';
 
   product_id;
   product_info = [];
@@ -20,6 +27,7 @@ export class EditProductComponent implements OnInit {
   constructor(private route: ActivatedRoute, private productService: ProductServiceService) { }
 
   ngOnInit(): void {
+    this.image1Url = "https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"
     if (sessionStorage.jwt == "null" || sessionStorage.jwt == undefined) {
       console.log(`In session`)
       return;
@@ -37,12 +45,17 @@ export class EditProductComponent implements OnInit {
         this.mrp = this.product_info[6]['value'];
         this.discount = this.product_info[8]['value'];
         this.tamil_title = this.product_info[11]['value'];
+        this.image1Url = this.product_info[5]['value'];
         console.log(this.product_info);
       });
     });
   }
 
   onSubmit() {
+    if(this.imageUploaded){
+      alert(`Please wait until the product image gets uploaded`);
+      return;
+    }
     let requestBody = [
       {
         "product_Attribute_EmbeddedId": {
@@ -65,6 +78,13 @@ export class EditProductComponent implements OnInit {
       {
         "product_Attribute_EmbeddedId": {
           "product_id": this.product_id,
+          "attribute_id": 5
+        },
+        "value": this.image1Url
+      },
+      {
+        "product_Attribute_EmbeddedId": {
+          "product_id": this.product_id,
           "attribute_id": 7
         }, "value": this.mrp
       },
@@ -83,7 +103,49 @@ export class EditProductComponent implements OnInit {
     ]
     this.productService.updateProduct(requestBody).subscribe((data) => {
       console.log(JSON.parse(JSON.stringify(data)));
+      if(data != undefined){
+        alert(`Product details updated successfully`)
+      }else{
+        alert(`Update Failed. Please try again!`);
+      }
     })
   }
 
+  async showFileDialog(): Promise<void> {
+    this.fileInput.nativeElement.click();
+
+  }
+
+  async onSelected(files: FileList): Promise<void> {
+    this.image1Url = "https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif"
+    this.imageUploaded = false;
+    this.fileInput.nativeElement.value === '';
+    this.files = files;
+    // Enter your storage account name and shared key
+    const account = "madrasmarketstorage";
+    const sas = "?sv=2019-12-12&ss=bfqt&srt=sco&sp=rwdlacupx&se=2070-07-30T21:34:10Z&st=2020-07-30T13:34:10Z&sip=0.0.0.0-255.255.255.255&spr=https,http&sig=Obg8AsUOKw1tMP9ueuHXABBC0LJeQ%2Fn8OeqtigEsFGY%3D";
+    const blobServiceClient = new BlobServiceClient(
+      `https://${account}.blob.core.windows.net${sas}`
+    );
+    const containerName = "productimages";
+    let i = 1;
+    let containers = blobServiceClient.listContainers();
+    console.log(containers);
+    for await (const container of containers) {
+      console.log(`Container ${i++}: ${container.name}`);
+    }
+
+    const containerClient = blobServiceClient.getContainerClient(containerName);
+
+    // const content = "Hello world!";
+    let extention = this.files.item(0).name.split(".");
+    console.log(extention[extention.length - 1] + "\t" + this.files.item(0).type);
+    const blobName = "newblob" + new Date().getTime() + "." + extention[extention.length - 1];
+    console.log(blobName);
+    const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+    const uploadBlobResponse = await blockBlobClient.upload(this.files.item(0), this.files.length);
+    console.log(`Upload block blob ${blobName} successfully`, uploadBlobResponse.requestId);
+    this.image1Url = `https://${account}.blob.core.windows.net/${containerName}/${blobName}`;
+    this.imageUploaded = true;
+  }
 }
