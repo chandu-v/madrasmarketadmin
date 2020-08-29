@@ -12,30 +12,30 @@ export class LoginComponent implements OnInit {
   user_name = "";
   password = "";
   clicked_items = 'DashBoard'
-  
-  constructor(private router:Router,private authenticateService:AuthenticationService) { }
+
+  constructor(private router: Router, private authenticateService: AuthenticationService) { }
 
   ngOnInit(): void {
-    
+
   }
 
-  onSubmit(){
+  onSubmit() {
     console.log(this.user_name);
     console.log(this.password);
-    this.authenticateService.getToken(this.user_name,this.password).subscribe((data)=>{
+    this.authenticateService.getToken(this.user_name, this.password).subscribe((data) => {
       let response = JSON.parse(JSON.stringify(data));
       console.log(response);
       console.log(response.body.jwt);
-      if(response.body.jwt === "BadCredentials"){
+      if (response.body.jwt === "BadCredentials") {
         alert("Wrong Credentials");
         this.user_name = "";
         this.password = "";
-      }else{
-         //This is where its broke - below:    
-         sessionStorage.setItem("jwt",response.body.jwt);  
-  this.clicked_items = 'Orders'
+      } else {
+        //This is where its broke - below:    
+        sessionStorage.setItem("jwt", response.body.jwt);
+        this.clicked_items = 'Orders'
 
-    window.location.replace('/order/0');
+        window.location.replace('/order/0');
 
         //  this.router.navigateByUrl('/');
       }

@@ -9,6 +9,7 @@ import { associate } from '../bean/associate';
 })
 export class AssociateService {
  
+ 
   
   private baseURL = "https://madrasmarketplaceapi.azurewebsites.net/";
 
@@ -48,6 +49,19 @@ export class AssociateService {
       catchError(this.handleError(`Error While Inserting Associate`))
     )
   }
+
+  updateDetails(updatedAssociate: associate) {
+    let url = `${this.baseURL}associate/save`;
+    let requestBody = `{
+      "associate_id":"${updatedAssociate.associate_id}",
+      "associate_name":"${updatedAssociate.associate_name}",
+      "associate_phone_number":"${updatedAssociate.associate_phone_number}"
+    }`;
+    
+    return this.http.post(url,requestBody,this.httpOptions).pipe(
+      tap(_=>console.log(`Inserted Associate`)),
+      catchError(this.handleError(`Error While Inserting Associate`))
+    )  }
 
    /**
 * Handle Http operation that failed.

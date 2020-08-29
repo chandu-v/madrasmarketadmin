@@ -19,6 +19,8 @@ import { AssociateComponent } from './associate/associate.component';
 import { AddAssociateComponent } from './add-associate/add-associate.component';
 import { UserComponent } from './user/user.component';
 import { ViewReferralsComponent } from './view-referrals/view-referrals.component';
+import { EditDeliveryPersonComponent } from './edit-delivery-person/edit-delivery-person.component';
+import { EditAssociateComponent } from './edit-associate/edit-associate.component';
 
 
 const routes: Routes = [
@@ -40,8 +42,9 @@ const routes: Routes = [
   {path:'associate/:id',component:AssociateComponent},
   {path:'associate/add',component:AddAssociateComponent},
   {path:'user/:id',component:UserComponent},
-  {path:'view-referrals/:id',component:ViewReferralsComponent}
-  
+  {path:'view-referrals/:id',component:ViewReferralsComponent},
+  {path:'edit-delivery-person/:id',component:EditDeliveryPersonComponent},
+  {path:'edit-associate/:id',component:EditAssociateComponent}
 
 ];
 

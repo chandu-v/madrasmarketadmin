@@ -27,6 +27,10 @@ export class AddAssociateComponent implements OnInit {
       return;
     }else{
       this.associateService.save(associateObj).subscribe((data)=>{
+        if(data == undefined){
+          alert("Referral Code already exist! Try a different one");
+          return;
+        }
         console.log(JSON.parse(JSON.stringify(data)));
         alert(`Associate Added Successfully!`);
         this.associate_name = '';

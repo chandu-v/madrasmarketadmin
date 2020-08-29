@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DeliveryBoyComponent implements OnInit {
 
-  displayedColumns : string[] = ['boy_id','boy_name','boy_phone_number','status']
+  displayedColumns : string[] = ['edit','boy_id','boy_name','boy_phone_number','status']
   delivery_boys:delivery_boy[] = [];
   getStatus:number ;
   view_what;
@@ -21,7 +21,7 @@ export class DeliveryBoyComponent implements OnInit {
     this.route.params.subscribe((data)=>{
       console.log(data['status']);
       this.getStatus = data['status']==1?0:1;
-      this.view_what = data['status']==1?'View Active Delivery Persion':'View InActive Delivery Persion';
+      this.view_what = data['status']!=1?'View Active Delivery Persion':'View InActive Delivery Persion';
       this.delivery_boy_service.getAllDeliveryBoyByStatusId(data['status']).subscribe((data)=>{
         this.delivery_boys =  JSON.parse(JSON.stringify(data));
         console.log(this.delivery_boys)

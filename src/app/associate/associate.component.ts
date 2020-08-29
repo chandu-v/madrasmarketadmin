@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AssociateComponent implements OnInit {
 
-  displayedColumns = ['associate_id','associate_name','associate_referral_code','view-referrals']
+  displayedColumns = ['edit','associate_id','associate_name','associate_referral_code','view-referrals']
   associates:associate[] = []
   constructor(private route:ActivatedRoute,private associateService:AssociateService) { }
 

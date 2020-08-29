@@ -15,6 +15,7 @@ export class AppComponent {
 
   clicked_items = 'DashBoard'
   fillerNav = Array.from({ length: 5 }, (_, i) => `Nav Item ${i + 1}`);
+  showNav = false;
 
   private _mobileQueryListener: () => void;
 
@@ -32,7 +33,9 @@ export class AppComponent {
       console.log(data);
       if (data) {
         // this.router.navigateByUrl('/order/0');
+        this.showNav = true;
       } else {
+        this.showNav = false;
         this.clicked_items = 'Login'
         this.router.navigateByUrl('/login')
       }
@@ -40,11 +43,13 @@ export class AppComponent {
   }
 
   logOut() {
+    this.showNav = false;
     sessionStorage.jwt = null;
     this.token = null;
     console.log(`In LogOut`);
     // window.location.replace('/login');
     this.router.navigateByUrl('/login');
+
   }
 
   ngOnDestroy(): void {

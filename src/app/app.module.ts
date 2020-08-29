@@ -37,7 +37,9 @@ import { AddAssociateComponent } from './add-associate/add-associate.component';
 import { UserComponent } from './user/user.component';
 import { ViewReferralsComponent } from './view-referrals/view-referrals.component';
 import {MatSidenavModule} from '@angular/material/sidenav'; 
-import {MatToolbarModule} from '@angular/material/toolbar'; 
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { EditDeliveryPersonComponent } from './edit-delivery-person/edit-delivery-person.component';
+import { EditAssociateComponent } from './edit-associate/edit-associate.component'; 
 
 
 @NgModule({
@@ -62,6 +64,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     AddAssociateComponent,
     UserComponent,
     ViewReferralsComponent,
+    EditDeliveryPersonComponent,
+    EditAssociateComponent,
   ],
   imports: [
     MatToolbarModule,
