@@ -8,6 +8,7 @@ import { Observable, of } from 'rxjs';
   providedIn: 'root'
 })
 export class OrderService {
+  
   private baseURL = "https://madrasmarketplaceapi.azurewebsites.net/";
 
   constructor(private http:HttpClient) { }
@@ -53,6 +54,14 @@ export class OrderService {
     return  this.http.get(url).pipe(
       tap(_=>console.log(`Order Status Updated`)),
       catchError(this.handleError( `Error occured in updating order status`))
+    )
+  }
+
+  search(status_id: any, searchterm: string) {
+    let url = `${this.baseURL}order_master/getAllOrdersBySearchTerm/${status_id}/${searchterm}`
+    return this.http.get(url).pipe(
+      tap(_=>console.log()),
+      catchError(this.handleError(`Error`))
     )
   }
 

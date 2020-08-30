@@ -12,6 +12,8 @@ export class OrderComponent implements OnInit {
   dataSource = [];
   view_what = '';
   page_map = '';
+  searchterm = '';
+  status_id ;
   constructor(private orderService:OrderService,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -21,16 +23,16 @@ export class OrderComponent implements OnInit {
     }
     this.route.params.subscribe((data)=>{
        
-      let status_id = data['status_id'];
-      if(status_id == '0'){
+      this.status_id = data['status_id'];
+      if(this.status_id == '0'){
         this.view_what = "View Delivered Orders"
         this.page_map = '2';
-      }else if(status_id == '2'){
+      }else if(this.status_id == '2'){
         this.view_what = "View Pending Orders"
         this.page_map = '0';
       }
        
-      this.orderService.getOrders(status_id)
+      this.orderService.getOrders(this.status_id)
       .subscribe((data)=>{
          
         this.dataSource = JSON.parse(JSON.stringify(data));
@@ -40,6 +42,11 @@ export class OrderComponent implements OnInit {
     
   }
 
+  searchOrders(){
+    this.orderService.search(this.status_id,this.searchterm).subscribe((data)=>{
+      this.dataSource = JSON.parse(JSON.stringify(data));
+    })
+  }
 
 
 }

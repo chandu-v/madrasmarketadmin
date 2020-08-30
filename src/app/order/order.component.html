@@ -1,3 +1,4 @@
+
 <div class="card-container">
 
     <a href="order/{{page_map}}">
@@ -5,6 +6,15 @@
     </a>
     <br>
 </div>
+
+<form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Search</mat-label>
+      <input matInput placeholder="Search" [(ngModel)]="searchterm" (keyup.enter)="searchOrders()" name="searchterm"
+        #ctrl="ngModel">
+      <mat-icon matSuffix (click)="searchOrders()">search</mat-icon>
+    </mat-form-field>
+  </form>
 
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
