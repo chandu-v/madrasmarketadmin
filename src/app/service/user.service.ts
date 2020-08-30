@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { tap, catchError } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
+import { error } from 'console';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+ 
  
   private baseURL = "https://madrasmarketplaceapi.azurewebsites.net/";
   constructor(private http: HttpClient) { }
@@ -35,6 +37,13 @@ export class UserService {
       catchError(this.handleError(`Errors in getting users`))
     )  }
 
+    searchUser(searchterm: string) {
+      let url = `${this.baseURL}users/search/${searchterm}`;
+      return this.http.get(url).pipe(
+        tap(_=>console.log()),
+        catchError(this.handleError())
+      )
+    }
   /**
 * Handle Http operation that failed.
 * Let the app continue.

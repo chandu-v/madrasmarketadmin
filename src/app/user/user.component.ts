@@ -10,6 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserComponent implements OnInit {
 
+  searchterm = '';
   displayedColumns = ["user_id","user_name","email_id","phone_number"];
   users:User[];
   constructor(private route:ActivatedRoute,private userService:UserService) { }
@@ -31,4 +32,13 @@ export class UserComponent implements OnInit {
     
   }
 
+  searchUsers(){
+    if(this.searchterm == ''){
+      alert('enter some text');
+      return;
+    }
+    this.userService.searchUser(this.searchterm).subscribe((data)=>{
+      this.users = JSON.parse(JSON.stringify(data));
+    })
+  }
 }
