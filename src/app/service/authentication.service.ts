@@ -14,7 +14,7 @@ export class AuthenticationService {
 
   getToken(userName:String,password:String) {
     const url = `${this.baseURL}authenticate/`;
-    console.log(url);
+     
     let requestBody = {
       "userName": userName,
       "password": password

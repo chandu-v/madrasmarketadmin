@@ -22,7 +22,7 @@ export class CollectionServiceService {
   };
   getCollectionById(id:any): any {
     const url = `${this.baseURL}collections/${id}`;
-    console.log(url);
+     
     return this.http
     .get(url)
     .pipe(
@@ -32,7 +32,7 @@ export class CollectionServiceService {
   }
   getCollections() {
     const collectionURL = `${this.baseURL}collections/`;
-    console.log(collectionURL);
+     
     return this.http
     .get(collectionURL)
     .pipe(
@@ -42,10 +42,10 @@ export class CollectionServiceService {
 
   addCollection(collection_name: String,parent_id:number)   {
     const collectionInsertURL = `${this.baseURL}collections/add`;
-    console.log(parent_id);
+     
     const body = JSON.stringify({"collection_name": collection_name,"parent_id":parent_id});
-    console.log(collectionInsertURL);
-    console.log(body);
+     
+     
 
       return this.http.post<Collection>(collectionInsertURL,body,this.httpOptions)
       .pipe(

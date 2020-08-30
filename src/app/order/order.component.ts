@@ -20,7 +20,7 @@ export class OrderComponent implements OnInit {
       return;
     }
     this.route.params.subscribe((data)=>{
-      console.log(data);
+       
       let status_id = data['status_id'];
       if(status_id == '0'){
         this.view_what = "View Delivered Orders"
@@ -29,12 +29,12 @@ export class OrderComponent implements OnInit {
         this.view_what = "View Pending Orders"
         this.page_map = '0';
       }
-      console.log(status_id);
+       
       this.orderService.getOrders(status_id)
       .subscribe((data)=>{
-        console.log(data);
+         
         this.dataSource = JSON.parse(JSON.stringify(data));
-        console.log(this.dataSource);
+         
       });
     });
     

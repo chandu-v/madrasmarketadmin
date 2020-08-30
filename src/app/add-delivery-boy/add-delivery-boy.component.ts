@@ -16,10 +16,10 @@ export class AddDeliveryBoyComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.delivery_boy_name);
-    console.log(this.delivery_boy_phone_number);
+     
+     
     this.delivery_boy_service.save(this.delivery_boy_name,this.delivery_boy_phone_number).subscribe((data)=>{
-      console.log(data);
+       
       alert(`Boy added Successfully!`);
       this.delivery_boy_name = '';
       this.delivery_boy_phone_number = '';

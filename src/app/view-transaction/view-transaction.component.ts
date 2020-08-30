@@ -18,7 +18,7 @@ export class ViewTransactionComponent implements OnInit {
     }
     this.transactionService.getAllTransactions().subscribe((data)=>{
       this.dataSource = JSON.parse(JSON.stringify(data));
-      console.log(this.dataSource);
+       
     })
   }
 

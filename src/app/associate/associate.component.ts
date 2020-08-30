@@ -19,12 +19,12 @@ export class AssociateComponent implements OnInit {
       if(data['id'] == -1){
         this.associateService.getAllAssociates().subscribe((data)=>{
           this.associates = JSON.parse(JSON.stringify(data));
-          console.log(this.associates);
+           
         });
       }else{
         this.associateService.getAllAssociatesById(data['id']).subscribe((data)=>{
           this.associates = JSON.parse(JSON.stringify(data));
-          console.log(this.associates);
+           
         })
       }
     });

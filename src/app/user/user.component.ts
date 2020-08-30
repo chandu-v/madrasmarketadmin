@@ -19,12 +19,12 @@ export class UserComponent implements OnInit {
       if(data['id'] == -1){
         this.userService.getAllUsers().subscribe((data)=>{
           this.users = JSON.parse(JSON.stringify(data));
-          console.log(this.users);
+           
         })
       }else{
         this.userService.getAllUsersById(data['id']).subscribe((data)=>{
           this.users = JSON.parse(JSON.stringify(data));
-          console.log(this.users);
+           
         })
       }
     })

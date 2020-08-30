@@ -63,8 +63,8 @@ export class ProductComponent implements OnInit {
       // temp.push();
       
       this.header = temp;
-      console.log(this.header);
-      console.log(JSON.parse(JSON.stringify(data)));
+       
+       
 
     
     });
@@ -91,7 +91,7 @@ export class ProductComponent implements OnInit {
   }
 
   searchProducts(){
-    console.log("Search Triggered");
+     
     if(this.searchterm == ""){
       this.searchTriggered = false;
       this.fromNumber = 0;
@@ -104,10 +104,10 @@ export class ProductComponent implements OnInit {
     }else{
       this.searchTriggered = true;
     }
-    console.log(this.searchterm);
+     
     this.productService.getProductsBySearchItems(this.searchterm).subscribe((data)=>{
       let processedData = JSON.parse(JSON.stringify(data));
-      console.log(processedData.body);
+       
       this.processData(processedData.body);
       
     });
@@ -116,9 +116,9 @@ export class ProductComponent implements OnInit {
   processData(data:any){
     this.dataSource = [];
     this.map.clear();
-    console.log(data);
+     
     let jsonArr = JSON.parse(JSON.stringify(data));
-    console.log(jsonArr);
+     
       let tempDataSource = [];
       jsonArr.forEach(element => {
         let product_id = element['product_Attribute_EmbeddedId']['product_id'];
@@ -139,8 +139,8 @@ export class ProductComponent implements OnInit {
         }
       });
       this.dataSource = tempDataSource;
-      console.log(this.dataSource);
-      console.log(this.map);
+       
+       
   }
 
   editProduct(product:any){

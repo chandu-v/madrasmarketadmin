@@ -19,7 +19,7 @@ export class DeliveryBoyComponent implements OnInit {
   ngOnInit(): void {
     
     this.route.params.subscribe((data)=>{
-      console.log(data['status']);
+       
       this.getStatus = data['status']==1?0:1;
       this.view_what = data['status']==1?'View Active Delivery Person':'View InActive Delivery Person';
       this.delivery_boy_service.getAllDeliveryBoyByStatusId(data['status']).subscribe((data)=>{

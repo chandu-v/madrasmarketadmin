@@ -21,7 +21,7 @@ export class TransactionServiceService {
   getAllTransactions() {
 
     const url = `${this.baseURL}transaction_master`
-    console.log(url);
+     
     return this.http.get(url)
     .pipe(
       tap(_=>console.log(`got transactions`)),
@@ -39,7 +39,7 @@ export class TransactionServiceService {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
-      // console.log(error); 
+      //   
 
       // TODO: better job of transforming error for user consumption
       //     this.log(`${operation} failed: ${error.message}`);

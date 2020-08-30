@@ -39,7 +39,7 @@ import { ViewReferralsComponent } from './view-referrals/view-referrals.componen
 import {MatSidenavModule} from '@angular/material/sidenav'; 
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { EditDeliveryPersonComponent } from './edit-delivery-person/edit-delivery-person.component';
-import { EditAssociateComponent } from './edit-associate/edit-associate.component'; 
+import { EditAssociateComponent } from './edit-associate/edit-associate.component';
 
 
 @NgModule({

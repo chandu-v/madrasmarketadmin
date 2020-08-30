@@ -61,7 +61,7 @@ export class DeliveryBoyService {
     }`;
 
 
-    console.log(requestBody);
+     
     return this.http.post(url, requestBody, this.httpOptions).pipe(
       tap(_ => console.log("Saved Successfully")),
       catchError(this.handleError(`Error occured while inserting delivery boy`))
@@ -81,7 +81,7 @@ export class DeliveryBoyService {
   }`;
 
 
-    console.log(requestBody);
+     
     return this.http.post(url, requestBody, this.httpOptions).pipe(
       tap(_ => console.log("Saved Successfully")),
       catchError(this.handleError(`Error occured while inserting delivery boy`))

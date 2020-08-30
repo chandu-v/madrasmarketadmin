@@ -18,7 +18,7 @@ export class OrderService {
   };
   getOrdersByOrderId(id:any): any {
     const url = `${this.baseURL}order_master/getAllByOrderId/${id}`;
-    console.log(url);
+     
     return this.http
     .get(url)
     .pipe(
@@ -28,7 +28,7 @@ export class OrderService {
   }
   getOrders(status_id:any) {
     const collectionURL = `${this.baseURL}order_master/getAllOrdersByStatusId/v2/${status_id}`;
-    console.log(collectionURL);
+     
     return this.http
     .get(collectionURL)
     .pipe(
@@ -38,7 +38,7 @@ export class OrderService {
 
   getOrderItems(order_id:any):any{
     const url = `${this.baseURL}order_master/getOrderItemsDetails/v2/${order_id}`;
-    console.log(url);
+     
     return this.http
     .get(url)
     .pipe(
@@ -49,7 +49,7 @@ export class OrderService {
 
   updateOrderStatus(statusId:any,order_id:any){
     let url = `${this.baseURL}order_master/update/${order_id}/${statusId}`;
-    console.log(url);
+     
     return  this.http.get(url).pipe(
       tap(_=>console.log(`Order Status Updated`)),
       catchError(this.handleError( `Error occured in updating order status`))

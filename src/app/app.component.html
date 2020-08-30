@@ -298,7 +298,7 @@
   }
 </style>
 <div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
-  <mat-toolbar color="primary" class="example-toolbar">
+  <mat-toolbar color="darkgray" class="example-toolbar">
     <button mat-icon-button (click)="snav.toggle()" *ngIf="showNav">
       <mat-icon>menu</mat-icon>
     </button>
@@ -310,14 +310,14 @@
     <div class="spacer"></div>
 
     <div *ngIf="token != undefined;else elseBlock">
-      <button mat-raised-button (click)="logOut()" color="primary">Logout</button>
+      <button mat-raised-button (click)="logOut()" color="darkgray">Logout</button>
 
     </div>
     <ng-template #elseBlock>
 
       <a rel="noopener" href="login/">
 
-        <button mat-raised-button color="primary">Login</button>
+        <button mat-raised-button color="darkgray">Login</button>
       </a>
     </ng-template>
   </mat-toolbar>
@@ -444,14 +444,14 @@
   <div class="spacer"></div>
 
   <div *ngIf="token != undefined;else elseBlock" >
-    <button mat-raised-button (click)="logOut()" color="primary">Logout</button>
+    <button mat-raised-button (click)="logOut()" color="darkgray">Logout</button>
     
   </div>
   <ng-template #elseBlock>
 
       <a rel="noopener" href="login/">
 
-        <button mat-raised-button color="primary">Login</button>
+        <button mat-raised-button color="darkgray">Login</button>
       </a>
   </ng-template>
 </div> -->

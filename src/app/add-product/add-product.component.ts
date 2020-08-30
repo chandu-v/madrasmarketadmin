@@ -64,11 +64,11 @@ export class AddProductComponent implements OnInit {
     this.inventoryService.getAll()
     .subscribe(data=>{
       this.inventories = JSON.parse(JSON.stringify(data));
-      console.log(this.inventories);
+       
     })
     this.collectionService.getCollections()
     .subscribe(data=>{
-      console.log(data);
+       
       let tempCollection : Collection[]= JSON.parse(JSON.stringify(data));
       tempCollection.forEach(element => {
         if(element.parent_id != -1){
@@ -76,7 +76,7 @@ export class AddProductComponent implements OnInit {
         }
       });
       
-      console.log(this.collections);
+       
     })
   }
 
@@ -170,7 +170,7 @@ export class AddProductComponent implements OnInit {
     ];
 
     let valid = true;
-    console.log(product_attributes);
+     
     
     if(this.inventories == null){
       alert(`Inventories are loading. Please try again`);
@@ -185,7 +185,7 @@ export class AddProductComponent implements OnInit {
     }
 
     for (let element of product_attributes) {
-      console.log(element);
+       
       if (element['value'] == '') {
         valid = false;
         alert("All fields are mandatory!");
@@ -203,7 +203,7 @@ export class AddProductComponent implements OnInit {
     if (valid && this.imageUploaded) {
       this.productService.add(product_attributes)
         .subscribe(data => {
-          console.log(data);
+           
           this.name_form_control.setValue('');
           this.description_form_control.setValue('');
           this.upc_form_control.setValue('');
@@ -235,21 +235,21 @@ export class AddProductComponent implements OnInit {
     const containerName = "productimages";
     let i = 1;
     let containers = blobServiceClient.listContainers();
-    console.log(containers);
+     
     for await (const container of containers) {
-      console.log(`Container ${i++}: ${container.name}`);
+       
     }
 
     const containerClient = blobServiceClient.getContainerClient(containerName);
  
   // const content = "Hello world!";
   let extention  = this.files.item(0).name.split(".");
-  console.log(extention[extention.length-1]+"\t"+this.files.item(0).type);
+   
   const blobName = "newblob" + new Date().getTime()+"."+extention[extention.length-1];
-  console.log(blobName);
+   
   const blockBlobClient = containerClient.getBlockBlobClient(blobName);
   const uploadBlobResponse = await blockBlobClient.upload(this.files.item(0), this.files.length);
-  console.log(`Upload block blob ${blobName} successfully`, uploadBlobResponse.requestId);
+   
   this.image1Url = `https://${account}.blob.core.windows.net/${containerName}/${blobName}`;
   this.imageUploaded = true;
   }

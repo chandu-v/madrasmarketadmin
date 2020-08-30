@@ -33,11 +33,11 @@ export class EditProductComponent implements OnInit {
       return;
     }
     this.route.params.subscribe((data) => {
-      console.log(data);
+       
       this.product_id = data["id"];
-      console.log(this.product_id);
+       
       this.productService.getProductsById(this.product_id).subscribe((data) => {
-        console.log(data);
+         
         this.product_info = JSON.parse(JSON.stringify(data));
         this.product_name = this.product_info[0]['value'];
         this.product_description = this.product_info[1]['value'];
@@ -46,7 +46,7 @@ export class EditProductComponent implements OnInit {
         this.discount = this.product_info[8]['value'];
         this.tamil_title = this.product_info[11]['value'];
         this.image1Url = this.product_info[5]['value'];
-        console.log(this.product_info);
+         
       });
     });
   }
@@ -102,7 +102,7 @@ export class EditProductComponent implements OnInit {
       },
     ]
     this.productService.updateProduct(requestBody).subscribe((data) => {
-      console.log(JSON.parse(JSON.stringify(data)));
+       
       if(data != undefined){
         alert(`Product details updated successfully`)
       }else{
@@ -130,21 +130,21 @@ export class EditProductComponent implements OnInit {
     const containerName = "productimages";
     let i = 1;
     let containers = blobServiceClient.listContainers();
-    console.log(containers);
+     
     for await (const container of containers) {
-      console.log(`Container ${i++}: ${container.name}`);
+       
     }
 
     const containerClient = blobServiceClient.getContainerClient(containerName);
 
     // const content = "Hello world!";
     let extention = this.files.item(0).name.split(".");
-    console.log(extention[extention.length - 1] + "\t" + this.files.item(0).type);
+     
     const blobName = "newblob" + new Date().getTime() + "." + extention[extention.length - 1];
-    console.log(blobName);
+     
     const blockBlobClient = containerClient.getBlockBlobClient(blobName);
     const uploadBlobResponse = await blockBlobClient.upload(this.files.item(0), this.files.length);
-    console.log(`Upload block blob ${blobName} successfully`, uploadBlobResponse.requestId);
+     
     this.image1Url = `https://${account}.blob.core.windows.net/${containerName}/${blobName}`;
     this.imageUploaded = true;
   }

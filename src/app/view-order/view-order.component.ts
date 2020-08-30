@@ -37,11 +37,11 @@ export class ViewOrderComponent implements OnInit {
       return;
     }
     this.route.params.subscribe((data)=>{
-      console.log(data);
+       
       this.orderId = data['id']
-      console.log(this.orderId);
+       
       this.orderService.getOrderItems(this.orderId).subscribe((data)=>{
-        console.log(JSON.parse(JSON.stringify(data)));
+         
         this.dataSource = JSON.parse(JSON.stringify(data));
         if(this.dataSource.length>0){
           this.total_cost = this.dataSource[0]['total_cost'];
@@ -53,7 +53,7 @@ export class ViewOrderComponent implements OnInit {
     if(this.selectedValue == undefined){
       alert("Please select a Status");
     }
-    console.log(this.selectedValue);
+     
     this.orderService.updateOrderStatus(this.selectedValue,this.orderId).subscribe((data)=>{
       alert(`Successfully updated the order status`);
     })

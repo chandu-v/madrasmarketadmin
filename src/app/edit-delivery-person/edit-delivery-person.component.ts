@@ -38,7 +38,7 @@ export class EditDeliveryPersonComponent implements OnInit {
          this.delivery_boy_name = this.persons.boy_name;
          this.delivery_boy_phone_number = this.persons.phone_number;
          this.delivery_boy_status = this.persons.status;
-        console.log(this.persons);
+         
         console.log(this.delivery_boy_name)
         console.log(this.delivery_boy_phone_number)
         console.log(this.delivery_boy_status)
@@ -51,9 +51,9 @@ export class EditDeliveryPersonComponent implements OnInit {
     this.persons.boy_name = this.delivery_boy_name;
     this.persons.phone_number = this.delivery_boy_phone_number;
     this.persons.status = this.delivery_boy_status;
-    console.log(this.persons);
+     
     this.deliveryService.updateDetails(this.persons).subscribe((data)=>{
-      console.log(data);
+       
       if(data == undefined){
         alert(`something went wrong`);
       }else{

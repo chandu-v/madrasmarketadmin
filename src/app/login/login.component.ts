@@ -20,12 +20,12 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.user_name);
-    console.log(this.password);
+     
+     
     this.authenticateService.getToken(this.user_name, this.password).subscribe((data) => {
       let response = JSON.parse(JSON.stringify(data));
-      console.log(response);
-      console.log(response.body.jwt);
+       
+       
       if (response.body.jwt === "BadCredentials") {
         alert("Wrong Credentials");
         this.user_name = "";

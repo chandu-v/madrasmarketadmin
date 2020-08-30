@@ -17,8 +17,8 @@ export class AddAssociateComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.associate_name);
-    console.log(this.referral_code);
+     
+     
     let associateObj : associate = new associate();
     associateObj.associate_name = this.associate_name;
     associateObj.associate_phone_number = this.referral_code;
@@ -31,7 +31,7 @@ export class AddAssociateComponent implements OnInit {
           alert("Referral Code already exist! Try a different one");
           return;
         }
-        console.log(JSON.parse(JSON.stringify(data)));
+         
         alert(`Associate Added Successfully!`);
         this.associate_name = '';
         this.referral_code = '';

@@ -9,10 +9,10 @@
     <!-- <mat-form-field class="example-full-width">
         <mat-label>Image:</mat-label> -->
         <!-- <input matInput style="display: none" type="file" #fileInput (change)="onSelected($event.target.files)" />
-        <button  mat-raised-button color="primary" (click)="showFileDialog()">Click here to Image</button> -->
+        <button  mat-raised-button color="darkgray" (click)="showFileDialog()">Click here to Image</button> -->
     <!-- </mat-form-field> -->
     <input style="display: none" type="file" #fileInput (change)="onSelected($event.target.files)" />
-    <button mat-button color="primary" (click)="showFileDialog()">Click Here to Update Image</button>
+    <button mat-button color="darkgray" (click)="showFileDialog()">Click Here to Update Image</button>
     <img src="{{image1Url}}" alt="product_image" style="width: 100px;height:100px"/>
     <br>
     <mat-form-field class="example-full-width">
@@ -43,6 +43,6 @@
         <input matInput placeholder="Tamil Title" [(ngModel)]="tamil_title" name="tamil_title" #ctrl="ngModel">
     </mat-form-field>
     <br>
-    <button mat-raised-button color="primary" (click)="onSubmit()" style="float: left;">
+    <button mat-raised-button color="darkgray" (click)="onSubmit()" style="float: left;">
         Update</button>
 </form>

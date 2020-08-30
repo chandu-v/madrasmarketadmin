@@ -23,14 +23,14 @@ export class CollectionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(sessionStorage.jwt);
+     
     if (sessionStorage.jwt == "null" || sessionStorage.jwt == undefined) {
       console.log(`In session`)
       return;
     }
     this.collectionService.getCollections()
       .subscribe(data => {
-        console.log(data);
+         
         this.dataSource = JSON.parse(JSON.stringify(data));
       })
 

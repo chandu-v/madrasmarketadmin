@@ -27,7 +27,7 @@ export class ProductServiceService {
 
   getProductsById(product_id:any):any{
     const url = `${this.baseURL}products/get/${product_id}`;
-    console.log(url);
+     
     return this.http.get(url).pipe(
       tap(_=>console.log(`fetched product details${product_id}`)),
       catchError(this.handleError(`Error in fetching product details ${product_id}`))
@@ -36,7 +36,7 @@ export class ProductServiceService {
 
   getProducts(fromNumber:any) {
     const collectionURL = `${this.baseURL}products/getProductsFrom/${fromNumber}`;
-    console.log(collectionURL);
+     
     return this.http.get(collectionURL).pipe(
       tap(_ => console.log(`fetched Products`)),
       catchError(this.handleError(`Error in Fetching Collections`)));
@@ -53,8 +53,8 @@ export class ProductServiceService {
 
   add(product_attributes: { product_Attribute_EmbeddedId: { attribute_id: number; }; value: any; }[]) {
     const addProductUrl = `${this.baseURL}products/add`;
-    console.log(addProductUrl);
-    console.log(product_attributes);
+     
+     
     return this.http.post(addProductUrl,product_attributes,this.httpOptions)
     .pipe(
       tap(_=> console.log(`added Products`)),
@@ -64,8 +64,8 @@ export class ProductServiceService {
 
   updateProduct(product_attributes:any[]){
     const url = `${this.baseURL}products/update`;
-    console.log(url);
-    console.log(product_attributes);
+     
+     
     return this.http.post(url,product_attributes,this.httpOptions)
     .pipe(
       tap(_=>console.log(`updated products`)),
@@ -84,7 +84,7 @@ export class ProductServiceService {
     return (error: any): Observable<T> => {
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
-      // console.log(error); 
+      //   
 
       // TODO: better job of transforming error for user consumption
       //     this.log(`${operation} failed: ${error.message}`);
@@ -96,7 +96,7 @@ export class ProductServiceService {
 
   
   uploadItems(files: FileList): void {
-    console.log(files);
+     
     // this.uploadQueueInner$.next(files);
   }
 

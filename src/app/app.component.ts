@@ -25,12 +25,12 @@ export class AppComponent {
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
   ngOnInit(): void {
-    console.log("ok");
-    console.log(sessionStorage.jwt);
+     
+     
     this.token = sessionStorage.jwt;
-    console.log(this.token);
+     
     this.authService.validateToken(sessionStorage.jwt).subscribe((data) => {
-      console.log(data);
+       
       if (data) {
         // this.router.navigateByUrl('/order/0');
         this.showNav = true;
@@ -46,7 +46,7 @@ export class AppComponent {
     this.showNav = false;
     sessionStorage.jwt = null;
     this.token = null;
-    console.log(`In LogOut`);
+     
     // window.location.replace('/login');
     this.router.navigateByUrl('/login');
 
@@ -58,7 +58,7 @@ export class AppComponent {
 
   clickedRoute(route: any) {
     this.authService.validateToken(sessionStorage.jwt).subscribe((data) => {
-      console.log(data);
+       
       if (data) {
         switch (route) {
           case 'collection':
