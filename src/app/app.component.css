@@ -49,3 +49,9 @@
   .toolbar #twitter-logo:hover {
     opacity: 0.8;
   }
+.mat-list-base{
+  background:darkgray
+}
+.mat-nav-list{
+  background: darkgray;
+}

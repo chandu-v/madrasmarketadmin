@@ -1,6 +1,6 @@
 <div class="card-container">
   <a class="card" rel="noopener" href="add-product/">
-    <button mat-raised-button color="darkgray">Add Product</button>
+    <button mat-raised-button color="primary">Add Product</button>
   </a>
   <br>
   <br>
@@ -15,10 +15,10 @@
 </div>
 
 <div *ngIf="!searchTriggered">
-  <button mat-raised-button color="darkgray" (click)="goPrevious()" style="float: left;">
+  <button mat-raised-button color="primary" (click)="goPrevious()" style="float: left;">
     < Previous</button>
 
-      <button mat-raised-button color="darkgray" (click)="getNext()" style="float: right;">Next ></button>
+      <button mat-raised-button color="primary" (click)="getNext()" style="float: right;">Next ></button>
 </div>
 <br>
 <br>
@@ -41,8 +41,8 @@
   </table>
 </div>
 <div *ngIf="!searchTriggered">
-  <button mat-raised-button color="darkgray" (click)="goPrevious()" style="float: left;">
+  <button mat-raised-button color="primary" (click)="goPrevious()" style="float: left;">
     < Previous</button>
 
-      <button mat-raised-button color="darkgray" (click)="getNext()" style="float: right;">Next ></button>
+      <button mat-raised-button color="primary" (click)="getNext()" style="float: right;">Next ></button>
 </div>

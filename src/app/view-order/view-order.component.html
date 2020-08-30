@@ -1,9 +1,9 @@
 <div class="card-container">
 
-    <button mat-raised-button color="darkgray">Order ID: {{orderId}}</button>
+    <button mat-raised-button color="primary">Order ID: {{orderId}}</button>
     <br>
     <br>
-    <button mat-raised-button color="darkgray">Total Cost: {{total_cost}}</button>
+    <button mat-raised-button color="primary">Total Cost: {{total_cost}}</button>
     <br>
     <br>
 
@@ -17,7 +17,7 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-raised-button color="darkgray" style="margin: 10px;" (click)="updateOrderStatus()">Update Order Status</button>
+        <button mat-raised-button color="primary" style="margin: 10px;" (click)="updateOrderStatus()">Update Order Status</button>
        
       </form>
       
@@ -82,7 +82,7 @@
             <a class="card" rel="noopener"
             href="product/{{element.order_Item_EmbeddedKey.product_id}}">
 
-            <button mat-raised-button color="darkgray">View Product Details</button> </a> 
+            <button mat-raised-button color="primary">View Product Details</button> </a> 
         </td>
 
 
