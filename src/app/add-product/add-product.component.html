@@ -9,7 +9,7 @@
         <label>Product Name</label>
       </td>
       <td>
-        <input type="text" placeholder="Ex. Staples" [formControl]="name_form_control">
+        <input type="text" placeholder="Ex. Staples" [formControl]="name_form_control" required>
       </td>
     </tr>
     <tr>
@@ -19,7 +19,7 @@
         </label>
       </td>
       <td>
-        <textarea placeholde="Product Description" [formControl]="description_form_control">
+        <textarea placeholde="Product Description" [formControl]="description_form_control" required>
     </textarea>
       </td>
     </tr>
@@ -28,7 +28,7 @@
         <label>
           Image:</label></td>
       <td>
-        <input style="display: none" type="file" #fileInput (change)="onSelected($event.target.files)" />
+        <input style="display: none" type="file" #fileInput (change)="onSelected($event.target.files)" required/>
         <button (click)="showFileDialog()">Click here to Image</button>
     <img src="{{image1Url}}" alt="" style="width: 100px;height:100px"/>
       
@@ -40,7 +40,7 @@
           UPC:</label>
       </td>
       <td>
-        <input type="text" placeholder="Ex. OIL-LT" [formControl]="upc_form_control">
+        <input type="text" placeholder="Ex. OIL-LT" [formControl]="upc_form_control" required>
       </td>
     </tr>
     <tr>
@@ -50,7 +50,7 @@
           Quantity:</label>
       </td>
       <td>
-        <input type="text" placeholder="Ex. 1" [value]="quantity" [formControl]="quantity_form_control">
+        <input type="text" placeholder="Ex. 1" [value]="quantity" [formControl]="quantity_form_control" required>
 
       </td>
     </tr>
@@ -64,7 +64,7 @@
       <td>
         <mat-form-field appearance="fill">
           <mat-label>Metric</mat-label>
-          <mat-select [(ngModel)]="selectedMetric" name="metric">
+          <mat-select [(ngModel)]="selectedMetric" name="metric" required>
             <mat-option *ngFor="let food of metrics" [value]="food">
               {{food}}
             </mat-option>
@@ -82,7 +82,7 @@
           MRP:</label>
       </td>
       <td>
-        <input type="text" placeholder="Ex. 120" [value]="mrp" [formControl]="mrp_form_control">
+        <input type="number" step=".01" placeholder="Ex. 120" [value]="mrp" [formControl]="mrp_form_control" required>
 
       </td>
     </tr>
@@ -92,7 +92,7 @@
           Discount:</label>
       </td>
       <td>
-        <input type="text" placeholder="Ex. 2" [value]="discount" [formControl]="discount_form_control">
+        <input type="number" step=".01" placeholder="Ex. 2" [value]="discount" [formControl]="discount_form_control" required>
 
       </td>
     </tr>
@@ -103,7 +103,7 @@
           GST:</label>
       </td>
       <td>
-        <input type="text" placeholder="Ex. 2" [value]="gst" [formControl]="gst_form_control">
+        <input type="text" placeholder="Ex. 2" [value]="gst" [formControl]="gst_form_control" required>
 
       </td>
     </tr>
@@ -116,7 +116,7 @@
       <td>
          <mat-form-field appearance="fill">
           <mat-label>Collection</mat-label>
-          <mat-select [(ngModel)]="selectedValue" name="food">
+          <mat-select [(ngModel)]="selectedValue" name="food" required>
             <mat-option *ngFor="let food of collections" [value]="food.collection_id">
               {{food.collection_name}}
             </mat-option>
@@ -134,7 +134,7 @@
         </label>
       </td>
       <td>
-        <input type="text" placeholder="Ex. OIL-1-LT" [value]="sku" [formControl]="sku_form_control">
+        <input type="text" placeholder="Ex. OIL-1-LT" [value]="sku" [formControl]="sku_form_control" required>
 
       </td>
     </tr>
@@ -147,7 +147,7 @@
         </label>
       </td>
       <td>
-        <input type="text" placeholder="Ex. எண்ணெய்" [value]="tamil_title" [formControl]="tamil_title_form_control">
+        <input type="text" placeholder="Ex. எண்ணெய்" [value]="tamil_title" [formControl]="tamil_title_form_control" required>
 
       </td>
     </tr>
