@@ -40,6 +40,8 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { EditDeliveryPersonComponent } from './edit-delivery-person/edit-delivery-person.component';
 import { EditAssociateComponent } from './edit-associate/edit-associate.component';
+import { ViewDeliveryBoyComponent } from './view-delivery-boy/view-delivery-boy.component';
+import { ViewOrderByDeliveryPersonComponent } from './view-order-by-delivery-person/view-order-by-delivery-person.component';
 
 
 @NgModule({
@@ -66,6 +68,8 @@ import { EditAssociateComponent } from './edit-associate/edit-associate.componen
     ViewReferralsComponent,
     EditDeliveryPersonComponent,
     EditAssociateComponent,
+    ViewDeliveryBoyComponent,
+    ViewOrderByDeliveryPersonComponent,
   ],
   imports: [
     MatToolbarModule,

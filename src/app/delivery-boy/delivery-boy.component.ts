@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class DeliveryBoyComponent implements OnInit {
 
-  displayedColumns : string[] = ['edit','boy_id','boy_name','boy_phone_number','status']
+  displayedColumns : string[] = ['edit','boy_id','boy_name','boy_phone_number','status','view_orders']
   delivery_boys:delivery_boy[] = [];
   getStatus:number ;
   view_what;

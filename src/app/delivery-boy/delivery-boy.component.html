@@ -47,6 +47,12 @@
         <td mat-cell *matCellDef="let element"> {{element.status}} </td>
       </ng-container>
       
+        <!-- Name Column -->
+    <ng-container matColumnDef="view_orders">
+      <th mat-header-cell *matHeaderCellDef> View Orders </th>
+      <td mat-cell *matCellDef="let element"> <a href="ordersByDeliveryPerson/{{element.boy_id}}/0">View Pending Orders</a> </td>
+    </ng-container>
+    
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

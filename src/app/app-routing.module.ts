@@ -21,6 +21,8 @@ import { UserComponent } from './user/user.component';
 import { ViewReferralsComponent } from './view-referrals/view-referrals.component';
 import { EditDeliveryPersonComponent } from './edit-delivery-person/edit-delivery-person.component';
 import { EditAssociateComponent } from './edit-associate/edit-associate.component';
+import { ViewDeliveryBoyComponent } from './view-delivery-boy/view-delivery-boy.component';
+import { ViewOrderByDeliveryPersonComponent } from './view-order-by-delivery-person/view-order-by-delivery-person.component';
 
 
 const routes: Routes = [
@@ -29,6 +31,7 @@ const routes: Routes = [
   { path: 'add-collection/:id', component: AddCollectionComponent },
   { path: 'add-product', component: AddProductComponent },
   { path: 'order/:status_id', component: OrderComponent },
+  { path: 'ordersByDeliveryPerson/:person_id/:status_id', component: ViewOrderByDeliveryPersonComponent },
   { path: 'order/details/:id', component: ViewOrderComponent },
   { path: 'product/:id', component: ViewProductComponent },
   { path: 'product/edit/:id', component: EditProductComponent},
@@ -38,6 +41,7 @@ const routes: Routes = [
   { path: 'login',component: LoginComponent},
   {path:'home',component:HomeComponent},
   {path:'delivery_boy/:status',component:DeliveryBoyComponent},
+  {path:'view_delivery_person/:id',component:ViewDeliveryBoyComponent},
   {path:'delivery_boy/add/new',component:AddDeliveryBoyComponent},
   {path:'associate/:id',component:AssociateComponent},
   {path:'associate/add/new',component:AddAssociateComponent},

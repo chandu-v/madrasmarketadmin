@@ -8,6 +8,7 @@ import { delivery_boy } from '../bean/delivery_boy';
   providedIn: 'root'
 })
 export class DeliveryBoyService {
+  
 
 
   private baseURL = "https://madrasmarketplaceapi.azurewebsites.net/";
@@ -44,8 +45,17 @@ export class DeliveryBoyService {
       .pipe(
         tap(_ => console.log(`fetched All Delivery Boys`),
           catchError(this.handleError(`Error in fetching all the delivery boys`)))
-      )
+   
+          )
   }
+  getOrderDetailsByDeliveryBoyIdAndStatus(boy_id: any, status: any) {
+    let url = `${this.baseURL}order_master/getOrderDetailsForDeliveryBoy/v3/${boy_id}/${status}`
+    return this.http.get(url)
+      .pipe(
+        tap(_ => console.log(`fetched All Delivery Boys`),
+          catchError(this.handleError(`Error in fetching all the delivery boys`)))
+   
+          )  }
 
 
   save(delivery_boy_name: any, delivery_boy_phone_number: any) {

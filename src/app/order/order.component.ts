@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./order.component.css']
 })
 export class OrderComponent implements OnInit {
-  displayedColumns: string[] = ['order_id', 'user_id', 'address','amount','cart_size','status_id','order_time','action'];
+  displayedColumns: string[] = ['order_id', 'user_id', 'address','amount','cart_size','status_id','order_time','delivery_boy','action'];
   dataSource = [];
   view_what = '';
   page_map = '';
@@ -34,8 +34,10 @@ export class OrderComponent implements OnInit {
        
       this.orderService.getOrders(this.status_id)
       .subscribe((data)=>{
+        console.log(data);
          
         this.dataSource = JSON.parse(JSON.stringify(data));
+        console.log(this.dataSource)
          
       });
     });
