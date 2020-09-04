@@ -175,17 +175,29 @@ export class AddProductComponent implements OnInit {
     if(this.inventories == null){
       alert(`Inventories are loading. Please try again`);
       valid = false;
+      return;
     }else{
       this.inventories.forEach(element => {
         if(element.sku == this.sku_form_control.value){
           alert(`SKU already Exists. Please use a unique one`);
           valid = false;
+          return;
         }
       });
     }
-
+    console.log(this.mrp_form_control.value);
+    if(this.mrp_form_control.value != null){
+      valid = false;
+      alert('Enter a valid mrp');
+      return;
+    }
+    if(this.discount_form_control.value != null){
+      valid = false;
+      alert('Enter a valid discount');
+      return;
+    }
     for (let element of product_attributes) {
-       
+        
       if (element['value'] == '') {
         valid = false;
         alert("All fields are mandatory!");
@@ -195,10 +207,13 @@ export class AddProductComponent implements OnInit {
     if( this.selectedValue == null || this.selectedMetric == null){
       valid = false;
       alert("Select a value from dropdown");
+      return;
     }
     if(!this.imageUploaded){
       alert("Image is getting uploaded. Please try again");
+      return;
     }
+   
     
     if (valid && this.imageUploaded) {
       this.productService.add(product_attributes)

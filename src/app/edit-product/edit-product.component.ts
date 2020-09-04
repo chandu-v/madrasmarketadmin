@@ -33,11 +33,11 @@ export class EditProductComponent implements OnInit {
       return;
     }
     this.route.params.subscribe((data) => {
-       
+
       this.product_id = data["id"];
-       
+
       this.productService.getProductsById(this.product_id).subscribe((data) => {
-         
+
         this.product_info = JSON.parse(JSON.stringify(data));
         this.product_name = this.product_info[0]['value'];
         this.product_description = this.product_info[1]['value'];
@@ -46,13 +46,22 @@ export class EditProductComponent implements OnInit {
         this.discount = this.product_info[8]['value'];
         this.tamil_title = this.product_info[11]['value'];
         this.image1Url = this.product_info[5]['value'];
-         
+
       });
     });
   }
 
   onSubmit() {
+
+    let valid = true;
+    // console.log(this.mrp);
+    if(this.mrp == null || this.discount == null){
+      valid = false;
+      alert(`Enter a valid MRP or Discount`);
+      return;
+    }
     if(this.imageUploaded){
+      valid = false;
       alert(`Please wait until the product image gets uploaded`);
       return;
     }
@@ -100,15 +109,18 @@ export class EditProductComponent implements OnInit {
           "attribute_id": 12
         }, "value": this.tamil_title
       },
-    ]
-    this.productService.updateProduct(requestBody).subscribe((data) => {
-       
-      if(data != undefined){
-        alert(`Product details updated successfully`)
-      }else{
-        alert(`Update Failed. Please try again!`);
-      }
-    })
+    ];
+    if(valid){
+      this.productService.updateProduct(requestBody).subscribe((data) => {
+
+        if(data != undefined){
+          alert(`Product details updated successfully`)
+        }else{
+          alert(`Update Failed. Please try again!`);
+        }
+      });
+    }
+
   }
 
   async showFileDialog(): Promise<void> {
@@ -130,21 +142,21 @@ export class EditProductComponent implements OnInit {
     const containerName = "productimages";
     let i = 1;
     let containers = blobServiceClient.listContainers();
-     
+
     for await (const container of containers) {
-       
+
     }
 
     const containerClient = blobServiceClient.getContainerClient(containerName);
 
     // const content = "Hello world!";
     let extention = this.files.item(0).name.split(".");
-     
+
     const blobName = "newblob" + new Date().getTime() + "." + extention[extention.length - 1];
-     
+
     const blockBlobClient = containerClient.getBlockBlobClient(blobName);
     const uploadBlobResponse = await blockBlobClient.upload(this.files.item(0), this.files.length);
-     
+
     this.image1Url = `https://${account}.blob.core.windows.net/${containerName}/${blobName}`;
     this.imageUploaded = true;
   }
