@@ -21,7 +21,7 @@ export class DeliveryBoyComponent implements OnInit {
     this.route.params.subscribe((data)=>{
        
       this.getStatus = data['status']==1?0:1;
-      this.view_what = data['status']==1?'View Active Delivery Person':'View InActive Delivery Person';
+      this.view_what = data['status']==1?'View InActive Delivery Person':'View Active Delivery Person';
       this.delivery_boy_service.getAllDeliveryBoyByStatusId(data['status']).subscribe((data)=>{
         this.delivery_boys =  JSON.parse(JSON.stringify(data));
         console.log(this.delivery_boys)

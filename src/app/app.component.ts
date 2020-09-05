@@ -79,7 +79,7 @@ export class AppComponent {
             break;
           case 'delivery':
             this.clicked_items = 'Delivery Associates'
-            this.router.navigateByUrl('/delivery_boy/0')
+            this.router.navigateByUrl('/delivery_boy/1')
             break;
           case 'user':
             this.clicked_items = 'Users'
